@@ -1,0 +1,7 @@
+parameters:
+#    spb_reality.example.class: Spb\RealityBundle\Example
+
+services:
+#    spb_reality.example:
+#        class: %spb_reality.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
