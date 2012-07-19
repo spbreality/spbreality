@@ -1,3 +1,7 @@
 SpbRealityBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: SpbRealityBundle:Default:index }
+
+SpbRealityBundle_realty:
+    pattern:  /realty/{name}
+    defaults: { _controller: SpbRealityBundle:Default:realty }

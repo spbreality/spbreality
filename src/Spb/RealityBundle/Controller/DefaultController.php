@@ -12,4 +12,10 @@ class DefaultController extends Controller
     {
         return $this->render('SpbRealityBundle:Default:index.html.twig', array('name' => $name));
     }
+    
+    public function realtyAction($name)
+    {
+        return $this->render('SpbRealityBundle:Default:realty.html.twig', array('name' => $name));
+    }
+    
 }

@@ -9,14 +9,16 @@
         <title>{% block title %}Агенство недвижимости{% endblock %}</title>
               
         <!-- Styles -->
-        <link href="{{ asset('bundles/spbreality/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/spbreality/css/bootstrap.css') }}" rel="stylesheet" />
+
         <style type="text/css">
           body {
             padding-top: 60px;
             padding-bottom: 40px;
           }
-        </style>               
-        <link href="{{ asset('bundles/spbreality/css/bootstrap-responsive.min.css') }}" rel="stylesheet" />
+        </style>
+       
+        <link href="{{ asset('bundles/spbreality/css/bootstrap-responsive.css') }}" rel="stylesheet" />
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,6 +32,9 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('apple-touch-icon-114-precomposed.png') }}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('apple-touch-icon-72-precomposed.png') }}">
         <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-57-precomposed.png') }}">
+
+        <!-- Put this script tag to the <head> of your page VK Widget-->
+        <script type="text/javascript" src="http://vk.com/js/api/share.js?11" charset="windows-1251"></script>
         
     </head>
     <body>
@@ -42,17 +47,79 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </a>
-              <a class="brand" href="#">Агенство недвижимости</a>
-              <div class="nav-collapse">
+
+              <a class="brand" href="#">Риэлторская компания</a>
+                            
+              <div class="nav-collapse  pull-right">
                 <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="#"><i class="icon-white icon-home"></i></a></li>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown" id="menu1">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+                    Новости и статьи
+                    <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Новости компании</a></li>
+                      <li><a href="#">Рынок жилья</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown" id="menu2">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">
+                    Недвижимость
+                    <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>&nbsp;&nbsp;Жилая недвижимость</li>
+                      <li><a href="#">Продажа квартир</a></li>
+                      <li><a href="#">Продажа комнат</a></li>
+                      <li><a href="#">Аренда квартир и комнат</a></li>
+                      <li class="divider"></li>
+                      <li>&nbsp;&nbsp;Коммерческая недвижимость</li>
+                      <li><a href="#">Офисные помещения</a></li>
+                      <li><a href="#">Торговые помещения</a></li>
+                      <li><a href="#">Здания и сооружения</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Элитная недвижимость</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Загородная недвижимость</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Недвижимость за рубежом</a></li>                      
+                    </ul>
+                  </li>
+                  <li class="dropdown" id="menu3">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu3">
+                    Фотокаталог
+                    <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Квартиры и комнаты</a></li>
+                      <li><a href="#">Элитная недвижимость</a></li>
+                      <li><a href="#">Загородные дома и участки</a></li>
+                      <li><a href="#">Коммерческая недвижимость</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#about">Услуги</a></li>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown" id="menu4">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu4">
+                    О компании
+                    <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Наши сотрудники</a></li>
+                      <li><a href="#">Вакансии</a></li>
+                      <li><a href="#">Схема проезда</a></li>                      
+                      <li class="divider"></li>
+                      <li><a href="#">Контакты</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div><!--/.nav-collapse -->
             </div>
           </div>
         </div>        
+      
         
         {% block body %}{% endblock %}
             
@@ -60,117 +127,30 @@
 
         <footer >
             <div class="container">
-            <div class="row">
-              <div class="span12">
-                <div class="row">
-                  <div class="span3">
-                    <h4>Product</h4>
-                    <ul class="unstyled">
-                      <li>
-                        <a href="/">Home</a>
-                      </li>
-                      <li>
-                        <a href="/why">Why Fleetio?</a>
-                      </li>
-                      <li>
-                        <a href="/tour">Feature Tour</a>
-                      </li>
-                      <li>
-                        <a href="/pricing">Pricing</a>
-                      </li>
-                      <li>
-                        <a href="/faq">FAQ</a>
-                        <span class="label success">Updated</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="span3">
-                    <h4>More</h4>
-                    <ul class="unstyled">
-                      <li>
-                        <a href="http://blog.fleetio.com">Fleetio Blog</a>
-                      </li>
-                      <li>
-                        <a href="/testimonials">Testimonials</a>
-                        <span class="label success">New</span>
-                      </li>
-                      <li>
-                        <a href="/roi">ROI Calculator</a>
-                      </li>
-                      <li>
-                        <a href="/fleet-management-software">Fleet Management Software</a>
-                      </li>
-                      <li>
-                        <a href="/vehicle-maintenance-software">Vehicle Maintenance Software</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="span3">
-                    <h4>Company</h4>
-                    <ul class="unstyled">
-                      <li>
-                        <a href="/about">About</a>
-                      </li>
-                      <li>
-                        <a href="/jobs">Jobs</a>
-                      </li>
-                      <li>
-                        <a href="/affiliates">Affiliate Partners</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="span3">
-                    <h4>Company</h4>
-                    <ul class="unstyled">
-                      <li>
-                        <a href="/about">About</a>
-                      </li>
-                      <li>
-                        <a href="/jobs">Jobs</a>
-                      </li>
-                      <li>
-                        <a href="/affiliates">Affiliate Partners</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <hr/>        
-
-          <div id="footer-floor">
-            <div class="container">
               <div class="row">
-                <div class="span9">
+                <div class="span3">
                   <h3 id="phone">
-                    1-800-975-5304
+                    (812) 314-48-68
                   </h3>
+                </div>
+                <div class="span3">
+                  <h3 id="phone">
+                    (921) 913-1-913 
+                  </h3>
+                </div>
+                      
+                <div class="span3">
                   <p>
-                    © 2011 <a href="http://www.rarestep.com" title="RareStep - Remarkable web-based software and websites in Birmingham, AL">RareStep, LLC</a>. All Rights Reserved.
-                    &nbsp;<a href="/terms">Terms</a>&nbsp;&amp;&nbsp;<a href="/privacy">Privacy</a>.
-                  </p>
+                    © 2007 <a href="http://www.rosreal.com" title="Риэлторская компаия - РосРеал">РосРеал</a>
+                  </p>                    
                 </div>
-                <div class="span3 ar" id="elsewhere-msg">
-                  <h4>Stay in touch:</h4>
+                <div class="span3">
+                    <!-- Put this script tag to the place, where the Share button will be -->
+                    <script type="text/javascript"><!--
+                    document.write(VK.Share.button(false,{type: "round", text: "Рекомендуйте нас друзьям"}));
+                    --></script>                    
                 </div>
-                <div class="span3" id="elsewhere-icons">
-                  <a class="twitter" href="https://twitter.com/fleetio" title="Follow @fleetio on Twitter">
-                    Twitter
-                  </a>
-                  <a class="facebook" href="https://www.facebook.com/fleetio" title="&quot;Like&quot; Fleetio on Facebook">
-                    Facebook
-                  </a>
-                  <a class="blog" href="http://blog.fleetio.com" title="Read our blog">
-                    Blog
-                  </a>
-                </div>
-              </div>
             </div>
-          </div>
-
-
         </footer>
         
         <!-- Javascript

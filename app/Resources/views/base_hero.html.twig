@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />        
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <title>{% block title %}Агенство недвижимости{% endblock %}</title>
+              
+        <!-- Styles -->
+        <link href="{{ asset('bundles/spbreality/css/bootstrap.css') }}" rel="stylesheet" />
+        <style type="text/css">
+          body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+          }
+        </style>  
+
+        <style type="text/css">
+          body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+          }
+          .sidebar-nav {
+            padding: 9px 0;
+          }
+        </style>
+        
+        <link href="{{ asset('bundles/spbreality/css/bootstrap-responsive.css') }}" rel="stylesheet" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+        {% block stylesheets %}{% endblock %}
+
+        <!-- Favorite and touch icons -->
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('apple-touch-icon-144-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('apple-touch-icon-114-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('apple-touch-icon-72-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('apple-touch-icon-57-precomposed.png') }}">
+        
+    </head>
+    <body>
+        
+        <div class="navbar navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="#">Агенство недвижимости</a>
+              <div class="nav-collapse">
+                <ul class="nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>        
+        
+        {% block body %}{% endblock %}
+            
+        <hr/>
+
+        <footer >
+            <div class="container">
+            <div class="row">
+              <div class="span12">
+                <div class="row">
+                  <div class="span3">
+                    <h4>Product</h4>
+                    <ul class="unstyled">
+                      <li>
+                        <a href="/">Home</a>
+                      </li>
+                      <li>
+                        <a href="/why">Why Fleetio?</a>
+                      </li>
+                      <li>
+                        <a href="/tour">Feature Tour</a>
+                      </li>
+                      <li>
+                        <a href="/pricing">Pricing</a>
+                      </li>
+                      <li>
+                        <a href="/faq">FAQ</a>
+                        <span class="label success">Updated</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="span3">
+                    <h4>More</h4>
+                    <ul class="unstyled">
+                      <li>
+                        <a href="http://blog.fleetio.com">Fleetio Blog</a>
+                      </li>
+                      <li>
+                        <a href="/testimonials">Testimonials</a>
+                        <span class="label success">New</span>
+                      </li>
+                      <li>
+                        <a href="/roi">ROI Calculator</a>
+                      </li>
+                      <li>
+                        <a href="/fleet-management-software">Fleet Management Software</a>
+                      </li>
+                      <li>
+                        <a href="/vehicle-maintenance-software">Vehicle Maintenance Software</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="span3">
+                    <h4>Company</h4>
+                    <ul class="unstyled">
+                      <li>
+                        <a href="/about">About</a>
+                      </li>
+                      <li>
+                        <a href="/jobs">Jobs</a>
+                      </li>
+                      <li>
+                        <a href="/affiliates">Affiliate Partners</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="span3">
+                    <h4>Company</h4>
+                    <ul class="unstyled">
+                      <li>
+                        <a href="/about">About</a>
+                      </li>
+                      <li>
+                        <a href="/jobs">Jobs</a>
+                      </li>
+                      <li>
+                        <a href="/affiliates">Affiliate Partners</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr/>        
+
+          <div id="footer-floor">
+            <div class="container">
+              <div class="row">
+                <div class="span9">
+                  <h3 id="phone">
+                    1-800-975-5304
+                  </h3>
+                  <p>
+                    © 2011 <a href="http://www.rarestep.com" title="RareStep - Remarkable web-based software and websites in Birmingham, AL">RareStep, LLC</a>. All Rights Reserved.
+                    &nbsp;<a href="/terms">Terms</a>&nbsp;&amp;&nbsp;<a href="/privacy">Privacy</a>.
+                  </p>
+                </div>
+                <div class="span3 ar" id="elsewhere-msg">
+                  <h4>Stay in touch:</h4>
+                </div>
+                <div class="span3" id="elsewhere-icons">
+                  <a class="twitter" href="https://twitter.com/fleetio" title="Follow @fleetio on Twitter">
+                    Twitter
+                  </a>
+                  <a class="facebook" href="https://www.facebook.com/fleetio" title="&quot;Like&quot; Fleetio on Facebook">
+                    Facebook
+                  </a>
+                  <a class="blog" href="http://blog.fleetio.com" title="Read our blog">
+                    Blog
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </footer>
+        
+        <!-- Javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ asset('bundles/spbreality/js/jquery-1.7.2.min.js') }}"></script>
+        <script src="{{ asset('bundles/spbreality/js/bootstrap.min.js') }}"></script>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
