@@ -6,7 +6,7 @@
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
-        <title>{% block title %}Агенство недвижимости{% endblock %}</title>
+        <title>{% block title %}Риэлторская компания РосРеал{% endblock %}</title>
               
         <!-- Styles -->
         <link href="{{ asset('bundles/spbreality/css/bootstrap.css') }}" rel="stylesheet" />
@@ -48,7 +48,7 @@
                 <span class="icon-bar"></span>
               </a>
 
-              <a class="brand" href="#">Риэлторская компания</a>
+                    <a class="brand" href="#"><img src="{{ asset('bundles/spbreality/img/logo.png') }}" alt="РосРеал" title="Риэлторская компания РосРеал"/></a>
                             
               <div class="nav-collapse  pull-right">
                 <ul class="nav">
@@ -146,11 +146,10 @@
                     © 2007 <a href="http://www.rosreal.com" title="Риэлторская компаия - РосРеал">РосРеал</a>
                   </p>                    
                 </div>
-                <div class="span3">
-                    <!-- Put this script tag to the place, where the Share button will be -->
-                    <script type="text/javascript"><!--
-                    document.write(VK.Share.button(false,{type: "round", text: "Рекомендуйте нас друзьям"}));
-                    --></script>                    
+                <div class="span3">                    
+                   <a href="http://vk.com/club36548056" title="РосРеал Вконтакте">                     
+                       РосРеал <img src="{{ asset('bundles/spbreality/img/vk32.png') }}" alt="В"/>контакте
+                   </a>
                 </div>
             </div>
         </footer>
