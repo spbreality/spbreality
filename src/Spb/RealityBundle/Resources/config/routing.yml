@@ -5,3 +5,7 @@ SpbRealityBundle_homepage:
 SpbRealityBundle_realty:
     pattern:  /realty/{name}
     defaults: { _controller: SpbRealityBundle:Default:realty }
+
+SpbRealityBundle_controller:
+    resource: "@SpbRealityBundle/Controller"
+    type:     annotation

@@ -1,0 +1,89 @@
+{% extends '::base_hero.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+<h1>Flat</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Rooms</th>
+            <td>{{ entity.rooms }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ entity.price }}</td>
+        </tr>
+        <tr>
+            <th>Floor</th>
+            <td>{{ entity.floor }}</td>
+        </tr>
+        <tr>
+            <th>Floors</th>
+            <td>{{ entity.floors }}</td>
+        </tr>
+        <tr>
+            <th>S</th>
+            <td>{{ entity.s }}</td>
+        </tr>
+        <tr>
+            <th>Sl</th>
+            <td>{{ entity.sl }}</td>
+        </tr>
+        <tr>
+            <th>Sk</th>
+            <td>{{ entity.sk }}</td>
+        </tr>
+        <tr>
+            <th>T1or2</th>
+            <td>{{ entity.t1or2 }}</td>
+        </tr>
+        <tr>
+            <th>Btype</th>
+            <td>{{ entity.btype }}</td>
+        </tr>
+        <tr>
+            <th>Otype</th>
+            <td>{{ entity.otype }}</td>
+        </tr>
+        <tr>
+            <th>Sdesc</th>
+            <td>{{ entity.sdesc }}</td>
+        </tr>
+        <tr>
+            <th>Ldesc</th>
+            <td>{{ entity.ldesc }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ entity.address }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_flat') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_flat_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('admin_flat_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+</div>
+{% endblock %}
