@@ -17,7 +17,7 @@ class LoadRegionData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $r = new Region();
-        $r->setName('Санкт-Петербург');
+        $r->setName('Петербург');
         $manager->persist($r);
         
         $d = new District(); $d->setName('Адмиралтейский'); $d->setRegion($r); $manager->persist($d);
@@ -41,7 +41,7 @@ class LoadRegionData implements FixtureInterface
         $d = new District(); $d->setName('Центральный'); $d->setRegion($r); $manager->persist($d);
 
         $r = new Region();
-        $r->setName('Ленинградская область');
+        $r->setName('Лен. область');
         $manager->persist($r);
 
         $d = new District(); $d->setName('Бокситогорский'); $d->setRegion($r); $manager->persist($d);

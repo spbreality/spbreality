@@ -121,7 +121,7 @@ class District
     
     public function __toString()
     {
-        return $this->getRegion()->getName() . ", " . $this->getName();
+        return $this->getName();
     }
     
 }

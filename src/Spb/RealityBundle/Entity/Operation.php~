@@ -3,20 +3,19 @@
 namespace Spb\RealityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Spb\RealityBundle\Entity\Region
+ * Spb\RealityBundle\Entity\Operation
  *
- * @ORM\Table(name="t01_region")
+ * @ORM\Table(name="c06_operation")
  * @ORM\Entity
  */
-class Region
+class Operation
 {
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="c01_id", type="integer")
+     * @ORM\Column(name="c06_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -25,19 +24,17 @@ class Region
     /**
      * @var string $name
      *
-     * @ORM\Column(name="c01_name", type="string", length=64)
+     * @ORM\Column(name="c06_name", type="string", length=32)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="District", mappedBy="region")
+     * @var string $abbr
+     *
+     * @ORM\Column(name="c06_abbr", type="string", length=4)
      */
-    protected $districts;
+    private $abbr;
 
-    public function __construct()
-    {
-        $this->districts = new ArrayCollection();
-    }    
 
     /**
      * Get id
@@ -70,27 +67,27 @@ class Region
     }
 
     /**
-     * Add districts
+     * Set abbr
      *
-     * @param Spb\RealityBundle\Entity\District $districts
+     * @param string $abbr
      */
-    public function addDistrict(\Spb\RealityBundle\Entity\District $districts)
+    public function setAbbr($abbr)
     {
-        $this->districts[] = $districts;
+        $this->abbr = $abbr;
     }
 
     /**
-     * Get districts
+     * Get abbr
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return string 
      */
-    public function getDistricts()
+    public function getAbbr()
     {
-        return $this->districts;
+        return $this->abbr;
     }
     
     public function __toString()
     {
         return $this->getName();
-    }    
+    }       
 }

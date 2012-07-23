@@ -386,24 +386,4 @@ class Flat
     {
         return $this->building_type;
     }
-
-    /**
-     * Set operation
-     *
-     * @param Spb\RealityBundle\Entity\Operation $operation
-     */
-    public function setOperation(\Spb\RealityBundle\Entity\Operation $operation)
-    {
-        $this->operation = $operation;
-    }
-
-    /**
-     * Get operation
-     *
-     * @return Spb\RealityBundle\Entity\Operation 
-     */
-    public function getOperation()
-    {
-        return $this->operation;
-    }
 }

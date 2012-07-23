@@ -3,7 +3,17 @@
 {% block body %}
 <div class="container">
 
-<h1>Flat</h1>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Жилая недвижимость</a><span class="divider">/</span>
+        </li>
+        <li>
+            <a href="#">Квартиры</a><span class="divider">/</span>
+        </li>
+        <li class="active">
+            Детали
+        </li>
+    </ul>
 
 <table class="record_properties">
     <tbody>
@@ -40,16 +50,12 @@
             <td>{{ entity.sk }}</td>
         </tr>
         <tr>
-            <th>T1or2</th>
-            <td>{{ entity.t1or2 }}</td>
-        </tr>
-        <tr>
             <th>Btype</th>
-            <td>{{ entity.btype }}</td>
+            <td>{{ entity.buildingtype }}</td>
         </tr>
         <tr>
-            <th>Otype</th>
-            <td>{{ entity.otype }}</td>
+            <th>Stage</th>
+            <td>{{ entity.buildingstage }}</td>
         </tr>
         <tr>
             <th>Sdesc</th>
