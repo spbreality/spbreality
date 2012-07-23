@@ -16,6 +16,7 @@
     <thead>
         <tr>
             <th>№</th>
+            <th colspan="2">Тип</th>
             <th>Район</th>
             <th>Адрес</th>
             <th>К</th>
@@ -32,12 +33,14 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('admin_flat_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.district }}</td>            
+            <td><a href="{{ path('admin_flat_show', { 'id': entity.id }) }}" title="Номер объекта">{{ entity.id }}</a></td>            
+            <td><a href="#" title="{{ entity.operation.name }}">{{ entity.operation.abbr }}</a></td>
+            <td><a href="#" title="{{ entity.buildingstage.name }}">{{ entity.buildingstage.abbr }}</a></td>            
+            <td>{{ entity.district }}</td>
             <td>{{ entity.address }}</td>          
             <td>{{ entity.rooms }}</td>
             <td>{{ entity.floor }}/{{ entity.floors }}</td>
-            <td>{{ entity.buildingtype.abbr }}</td>           
+            <td><a href="#" title="{{ entity.buildingtype.name }}">{{ entity.buildingtype.abbr }}</a></td>           
             <td>{{ entity.s }}</td>
             <td>{{ entity.sl }}</td>
             <td>{{ entity.sk }}</td>

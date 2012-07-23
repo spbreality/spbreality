@@ -15,9 +15,8 @@ class LoadOperationData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $op = new Operation(); $op->setName('Продажа'); $op->setAbbr('S'); $manager->persist($op);
-        $op = new Operation(); $op->setName('Покупка'); $op->setAbbr('B'); $manager->persist($op);
-        $op = new Operation(); $op->setName('Аренда'); $op->setAbbr('R'); $manager->persist($op);
+        $op = new Operation(); $op->setName('Продажа'); $op->setAbbr('П'); $manager->persist($op);
+        $op = new Operation(); $op->setName('Аренда'); $op->setAbbr('А'); $manager->persist($op);
         
         $manager->flush();
     }
