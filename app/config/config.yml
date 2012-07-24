@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -21,7 +21,11 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     form:
-        resources: ['form_table_layout.html.twig']
+        resources: 
+#          - 'form_table_layout.html.twig'
+          - 'SpbRealityBundle:Form:form_layout.html.twig'          
+#          - 'SpbRealityBundle:Form:fields_errors.html.twig'
+
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%

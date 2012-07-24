@@ -15,12 +15,13 @@
         </li>
     </ul>
 
-    <form action="{{ path('admin_flat_create') }}" method="post" {{ form_enctype(form) }}>
-
-        {{ form_widget(form) }}
-    <p>
-        <button type="submit">Добавить</button>
-    </p>
+    <form action="{{ path('admin_flat_create') }}" method="post" {{ form_enctype(form) }} class="well form-horizontal">
+        <fieldset>
+            {{ form_widget(form) }}
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Добавить</button>
+            </div>
+        </fieldset>
 </form>
 
 </div>

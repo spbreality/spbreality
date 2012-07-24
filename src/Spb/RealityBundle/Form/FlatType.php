@@ -20,7 +20,7 @@ class FlatType extends AbstractType
             ->add('rooms', null, array('label' => 'Кол-во комнат'))
             ->add('s', null, array('label' => 'Общая площадь'))
             ->add('sl', null, array('label' => 'Жилая площадь'))
-            ->add('sk', null, array('label' => 'Метраж кухни'))
+            ->add('sk', null, array('label' => 'Площадь кухни'))
             ->add('price', null, array('label' => 'Цена в тыс. руб.'))
             ->add('sdesc', null, array('label' => 'Доп. сведения'))
             ->add('ldesc', null, array('label' => 'Описание'))

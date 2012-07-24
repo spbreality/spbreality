@@ -1,0 +1,32 @@
+{% block field_row %}
+{% spaceless %}
+    <div class="control-group {% if errors|length > 0 %}error{% endif %}">
+        {{ form_label(form, label|default(null)) }}
+        <div class="controls">
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock field_row %}
+
+{% block generic_label %}
+{% spaceless %}
+    {% if required %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' required'}) %}
+    {% endif %}
+<label class="control-label" {% for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>{{ label|trans }}</label>
+{% endspaceless %}
+{% endblock %}
+
+{% block field_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+        <span class="help-inline">
+            {% for error in errors %}
+                {{ error.messageTemplate|trans(error.messageParameters, 'validators') }}.
+            {% endfor %}
+        </span>
+        {% endif %}
+    {% endspaceless %}
+{% endblock field_errors %}
