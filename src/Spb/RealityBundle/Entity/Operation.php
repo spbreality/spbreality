@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Spb\RealityBundle\Entity\Operation
  *
- * @ORM\Table(name="c06_operation")
+ * @ORM\Table(name="t06_operation")
  * @ORM\Entity
  */
 class Operation

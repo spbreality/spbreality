@@ -54,7 +54,7 @@ class Document
     
     /**
      * @ORM\ManyToOne(targetEntity="Realty")
-     * @ORM\JoinColumn(name="c06_realty_id", referencedColumnName="c07_id")
+     * @ORM\JoinColumn(name="c06_realty_id", referencedColumnName="c07_id", onDelete="CASCADE")
      */
     protected $realty;
 

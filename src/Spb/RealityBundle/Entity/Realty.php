@@ -68,7 +68,7 @@ class Realty
     /**
      * @ORM\OneToMany(targetEntity="Document", mappedBy="realties")
      */
-    protected $documents;
+    private $documents;
     
     /**
      * Get id
@@ -205,4 +205,29 @@ class Realty
     {
         return '' . $this->getId();
     }       
+    
+    public function __construct()
+    {
+        $this->documents = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add documents
+     *
+     * @param Spb\RealityBundle\Entity\Document $documents
+     */
+    public function addDocument(\Spb\RealityBundle\Entity\Document $documents)
+    {
+        $this->documents[] = $documents;
+    }
+
+    /**
+     * Get documents
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
+    }
 }

@@ -90,15 +90,35 @@
         <form action="{{ path('admin_flat_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
                 <button class="btn btn-mini btn-danger" type="submit">Удалить</button>
-        </form>                        
-              
-             
-                          
+        </form>                                                     
       </div>
-        <div class="span6"></div>
+      <div class="span6">
+        <div id="myCarousel" class="carousel slide">
+          <div class="carousel-inner">
+        <!-- Carousel items -->
+            <div class="item active">
+                <img src="/uploads/documents/3.jpg" alt="">
+                <div class="carousel-caption">
+                    <h4>Second Thumbnail label</h4>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <a href="#"> удалить </a>
+                </div>        
+            </div>
+            <div class="item">
+                <img src="/uploads/documents/4.jpg" alt="">
+                <div class="carousel-caption">
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>        
+            </div>
+            <div class="item">
+                <img src="/uploads/documents/5.jpg" alt="">      
+            </div>
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>        
       </div>
-            
-
-
+    </div>
 </div>
 {% endblock %}

@@ -230,5 +230,4 @@ class Flat extends Realty
         return $this->building_type;
     }
 
-
 }
