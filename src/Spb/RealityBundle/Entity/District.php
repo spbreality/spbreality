@@ -39,9 +39,9 @@ class District
     protected $region;
     
     /**
-     * @ORM\OneToMany(targetEntity="Flat", mappedBy="district")
+     * @ORM\OneToMany(targetEntity="Realty", mappedBy="district")
      */
-    protected $flats;
+    protected $realties;
 
     public function __construct()
     {
@@ -124,4 +124,24 @@ class District
         return $this->getRegion()->getName() . ", " . $this->getName();
     }
     
+
+    /**
+     * Add realties
+     *
+     * @param Spb\RealityBundle\Entity\Realty $realties
+     */
+    public function addRealty(\Spb\RealityBundle\Entity\Realty $realties)
+    {
+        $this->realties[] = $realties;
+    }
+
+    /**
+     * Get realties
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getRealties()
+    {
+        return $this->realties;
+    }
 }

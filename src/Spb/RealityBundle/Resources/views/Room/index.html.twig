@@ -1,0 +1,49 @@
+<h1>Room list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Price</th>
+            <th>Sdesc</th>
+            <th>Ldesc</th>
+            <th>Address</th>
+            <th>Rooms</th>
+            <th>Operation</th>
+            <th>District</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('admin_room_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.price }}</td>
+            <td>{{ entity.sdesc }}</td>
+            <td>{{ entity.ldesc }}</td>
+            <td>{{ entity.address }}</td>
+            <td>{{ entity.rooms }}</td>
+            <td>{{ entity.operation.abbr }}</td>
+            <td>{{ entity.district }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_room_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_room_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('admin_room_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

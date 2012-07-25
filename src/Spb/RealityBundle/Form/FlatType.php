@@ -11,7 +11,7 @@ class FlatType extends AbstractType
     {
         $builder
             ->add('operation', null, array('label' => 'Тип операции',))                
-            ->add('district', null, array('label' => 'Район',))
+            ->add('district', null, array('label' => 'Район'))
             ->add('address', null, array('label' => 'Адрес'))
             ->add('building_stage', null, array('label' => 'Статус',))
             ->add('building_type', null, array('label' => 'Материал дома',))
@@ -24,8 +24,6 @@ class FlatType extends AbstractType
             ->add('price', null, array('label' => 'Цена в тыс. руб.'))
             ->add('sdesc', null, array('label' => 'Доп. сведения'))
             ->add('ldesc', null, array('label' => 'Описание'))
-
-
         ;
     }
 

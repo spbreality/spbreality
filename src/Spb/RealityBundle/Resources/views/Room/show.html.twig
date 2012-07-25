@@ -1,0 +1,58 @@
+<h1>Room</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ entity.price }}</td>
+        </tr>
+        <tr>
+            <th>Sdesc</th>
+            <td>{{ entity.sdesc }}</td>
+        </tr>
+        <tr>
+            <th>Ldesc</th>
+            <td>{{ entity.ldesc }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ entity.address }}</td>
+        </tr>
+        <tr>
+            <th>Rooms</th>
+            <td>{{ entity.rooms }}</td>
+        </tr>
+        <tr>
+            <th>Operation</th>
+            <td>{{ entity.operation.abbr }}</td>
+        </tr>
+        <tr>
+            <th>Operation</th>
+            <td>{{ entity.district }}</td>
+        </tr>
+        
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_room') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_room_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('admin_room_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

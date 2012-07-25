@@ -25,11 +25,11 @@
                 </tr>
                 <tr>
                     <th>Тип сделки</th>
-                    <td>{{ entity.operation.name }}</td>
+                    <td>{{ entity.operation }}</td>
                 </tr>
                 <tr>
                     <th>Тип дома</th>
-                    <td>{{ entity.buildingstage.name }}</td>
+                    <td>{{ entity.buildingstage }}</td>
                 </tr>
                 <tr>
                     <th>Район</th>
@@ -81,7 +81,6 @@
                         &nbsp;
                     </th>
                     <td>
-                        <a href="{{ path('admin_flat_edit', { 'id': entity.id }) }}" class="icon-edit"></a>        
                         <a href="{{ path('admin_flat_edit', { 'id': entity.id }) }}"> Редактировать объект</a>
                     </td>
                 </tr>

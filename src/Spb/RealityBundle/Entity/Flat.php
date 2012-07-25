@@ -10,16 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="t04_flat")
  * @ORM\Entity(repositoryClass="Spb\RealityBundle\Entity\FlatRepository")
  */
-class Flat
+class Flat extends Realty
 {
-    /**
-     * @var integer $id
-     *
-     * @ORM\Column(name="c04_id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
      * @var smallint $rooms
@@ -27,13 +19,6 @@ class Flat
      * @ORM\Column(name="c04_rooms", type="smallint")
      */
     private $rooms;
-
-    /**
-     * @var decimal $price
-     *
-     * @ORM\Column(name="c04_price", type="decimal", scale=3)
-     */
-    private $price;
 
     /**
      * @var smallint $floor
@@ -82,48 +67,6 @@ class Flat
      */
     protected $building_type;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Operation")
-     * @ORM\JoinColumn(name="c04_operation_id", referencedColumnName="c06_id")
-     */
-    protected $operation;
-    
-    /**
-     * @var string $sdesc
-     *
-     * @ORM\Column(name="c04_sdesc", type="string", length=255)
-     */
-    private $sdesc;
-
-    /**
-     * @var text $ldesc
-     *
-     * @ORM\Column(name="c04_ldesc", type="text")
-     */
-    private $ldesc;
-
-    /**
-     * @var string $address
-     *
-     * @ORM\Column(name="c04_address", type="string", length=128)
-     */
-    private $address;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="District", inversedBy="flats")
-     * @ORM\JoinColumn(name="c04_district_id", referencedColumnName="c02_id")
-     */
-    protected $district;
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set rooms
@@ -143,26 +86,6 @@ class Flat
     public function getRooms()
     {
         return $this->rooms;
-    }
-
-    /**
-     * Set price
-     *
-     * @param decimal $price
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * Get price
-     *
-     * @return decimal 
-     */
-    public function getPrice()
-    {
-        return $this->price;
     }
 
     /**
@@ -266,86 +189,6 @@ class Flat
     }
 
 
-    /**
-     * Set sdesc
-     *
-     * @param string $sdesc
-     */
-    public function setSdesc($sdesc)
-    {
-        $this->sdesc = $sdesc;
-    }
-
-    /**
-     * Get sdesc
-     *
-     * @return string 
-     */
-    public function getSdesc()
-    {
-        return $this->sdesc;
-    }
-
-    /**
-     * Set ldesc
-     *
-     * @param text $ldesc
-     */
-    public function setLdesc($ldesc)
-    {
-        $this->ldesc = $ldesc;
-    }
-
-    /**
-     * Get ldesc
-     *
-     * @return text 
-     */
-    public function getLdesc()
-    {
-        return $this->ldesc;
-    }
-
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string 
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set district
-     *
-     * @param Spb\RealityBundle\Entity\district $district
-     */
-    public function setDistrict(\Spb\RealityBundle\Entity\district $district)
-    {
-        $this->district = $district;
-    }
-
-    /**
-     * Get district
-     *
-     * @return Spb\RealityBundle\Entity\district 
-     */
-    public function getDistrict()
-    {
-        return $this->district;
-    }
 
     /**
      * Set building_stage
@@ -387,23 +230,5 @@ class Flat
         return $this->building_type;
     }
 
-    /**
-     * Set operation
-     *
-     * @param Spb\RealityBundle\Entity\Operation $operation
-     */
-    public function setOperation(\Spb\RealityBundle\Entity\Operation $operation)
-    {
-        $this->operation = $operation;
-    }
 
-    /**
-     * Get operation
-     *
-     * @return Spb\RealityBundle\Entity\Operation 
-     */
-    public function getOperation()
-    {
-        return $this->operation;
-    }
 }
