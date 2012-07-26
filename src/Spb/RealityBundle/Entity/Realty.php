@@ -66,7 +66,7 @@ class Realty
     private $district;
 
     /**
-     * @ORM\OneToMany(targetEntity="Document", mappedBy="realties")
+     * @ORM\OneToMany(targetEntity="Document", mappedBy="realty")
      */
     private $documents;
     

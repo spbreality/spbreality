@@ -15,7 +15,7 @@
         </li>
     </ul>
 
-    <div class="row">
+    <div class="row-fluid">
       <div class="span6">    
         <table class="table table-striped table-bordered">
             <tbody>
@@ -76,49 +76,55 @@
                     <th>Описание</th>
                     <td>{{ entity.ldesc }}</td>
                 </tr>
-                <tr>
-                    <th>
-                        &nbsp;
-                    </th>
-                    <td>
-                        <a href="{{ path('admin_flat_edit', { 'id': entity.id }) }}"> Редактировать объект</a>
-                    </td>
-                </tr>
             </tbody>
         </table>
               
-        <form action="{{ path('admin_flat_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-                <button class="btn btn-mini btn-danger" type="submit">Удалить</button>
-        </form>                                                     
+        <a href="{{ path('admin_flat_edit', { 'id': entity.id }) }}"> Редактировать объект</a>
+        
       </div>
-      <div class="span6">
+            
+      <div class="span6">          
+        {% if entity.documents|length > 0 %}         
         <div id="myCarousel" class="carousel slide">
           <div class="carousel-inner">
         <!-- Carousel items -->
-            <div class="item active">
-                <img src="/uploads/documents/3.jpg" alt="">
-                <div class="carousel-caption">
-                    <h4>Second Thumbnail label</h4>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <a href="#"> удалить </a>
-                </div>        
+            {% for doc in entity.documents %}
+            <div class="item {% if loop.first %} active {% endif %}">
+                <img src="{{ doc.webpath }}" alt=""/>
+                {% if (doc.title is not empty or doc.desc is not empty) %}
+                <div class="carousel-caption">                    
+                    {% if doc.title is not empty %}
+                        <h4>{{ doc.title }}</h4>
+                    {% endif %}
+                    {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}                    
+                </div>
+                {% endif %}
             </div>
-            <div class="item">
-                <img src="/uploads/documents/4.jpg" alt="">
-                <div class="carousel-caption">
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </div>        
-            </div>
-            <div class="item">
-                <img src="/uploads/documents/5.jpg" alt="">      
-            </div>
+            {% endfor %}
           </div>
           <!-- Carousel nav -->
+          {% if entity.documents|length > 1 %}
           <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
           <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        </div>        
+          {% endif %}
+        </div>
+        
+        <ul class="thumbnails">
+          {% for doc in entity.documents %}            
+          <li class="span4">
+            <a onclick="$('#myCarousel').carousel({{loop.index-1}})" class="thumbnail">
+              <img src="{{ doc.webpath }}" alt=""/>
+            </a>
+          </li>
+          {% endfor %}          
+        </ul>          
+
+        {% else %}
+              Нет фотографий объекта.
+        {% endif %}  
+              
       </div>
+           
     </div>
 </div>
 {% endblock %}
