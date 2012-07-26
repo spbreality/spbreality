@@ -15,7 +15,7 @@
         </li>
     </ul>
     
-    <div class="row-fluid">
+    <div class="row">
       <div class="span6">    
 
         <form action="{{ path('admin_flat_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="well form-horizontal">
@@ -43,7 +43,7 @@
                 <img src="{{ doc.webpath }}" alt=""/>
                 {% if (doc.title is not empty or doc.desc is not empty) %}
                 <div class="carousel-caption">                    
-                    {% if doc.title is not empty %}<h4>{{ doc.title }}</h4>{% endif %}
+                    {% if doc.title is not empty %}<h4><span class="badge" style="float:right">{{ loop.index }}/{{ loop.length}}</span>{{ doc.title }}</h4>{% endif %}
                     {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}
                 </div>
                 {% endif %}
@@ -55,11 +55,11 @@
           <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
           <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
           {% endif %}
-        </div>
-        
+        </div>      
+              
         <ul class="thumbnails">
-          {% for doc in entity.documents %} 
-          <li class="span4">
+          {% for doc in entity.documents %}                
+          <li class="span2">              
             <a onclick="$('#myCarousel').carousel({{loop.index-1}})" class="thumbnail">
               <img src="{{ doc.webpath }}" alt=""/>
             </a>
@@ -67,13 +67,15 @@
             <form action="{{ path('admin_document_delete', { 'id': doc.id }) }}" method="post">
                 {{ form_widget(delete_form) }}
                     <p align="right">
-                        <button type="submit" class="btn btn-mini btn-danger">Удалить фотографию</button>
+                        <a href="#">удалить</a>
+                        <span class="badge">{{ loop.index }}/{{ loop.length}}</span>
                     </p>
+                
             </form>
-          </li>
+          </li>          
           {% endfor %}          
         </ul>          
-
+              
         {% else %}
               Нет фотографий объекта.
         {% endif %}  
