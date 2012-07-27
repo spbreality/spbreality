@@ -91,6 +91,9 @@ class Document
     {
         if (null !== $this->file) {
             $this->path = $this->file->guessExtension();
+            
+            // set the name property to the original filename
+            $this->name = $this->file->getClientOriginalName();            
         }
     }
 
@@ -108,7 +111,7 @@ class Document
         // so that the entity is not persisted to the database
         // which the UploadedFile move() method does
         $this->file->move($this->getUploadRootDir(), $this->id.'.'.$this->file->guessExtension());
-
+        
         unset($this->file);
     }
 

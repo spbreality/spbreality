@@ -93,10 +93,8 @@
                 <img src="{{ doc.webpath }}" alt=""/>
                 {% if (doc.title is not empty or doc.desc is not empty) %}
                 <div class="carousel-caption">                    
-                    {% if doc.title is not empty %}
-                        <h4>{{ doc.title }}</h4>
-                    {% endif %}
-                    {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}                    
+                    <h4><span class="badge" style="float:right">{{ loop.index }}/{{ loop.length}}</span>{{ doc.title }}</h4>
+                    {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}
                 </div>
                 {% endif %}
             </div>
@@ -111,7 +109,7 @@
         
         <ul class="thumbnails">
           {% for doc in entity.documents %}            
-          <li class="span4">
+          <li class="span2">
             <a onclick="$('#myCarousel').carousel({{loop.index-1}})" class="thumbnail">
               <img src="{{ doc.webpath }}" alt=""/>
             </a>
@@ -124,6 +122,7 @@
         {% endif %}  
               
       </div>
+            
            
     </div>
 </div>
