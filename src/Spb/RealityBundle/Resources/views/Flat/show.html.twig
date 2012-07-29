@@ -107,16 +107,6 @@
           {% endif %}
         </div>
         
-        <ul class="thumbnails">
-          {% for doc in entity.documents %}            
-          <li class="span2">
-            <a onclick="$('#myCarousel').carousel({{loop.index-1}})" class="thumbnail">
-              <img src="{{ doc.webpath }}" alt=""/>
-            </a>
-          </li>
-          {% endfor %}          
-        </ul>          
-
         {% else %}
               Нет фотографий объекта.
         {% endif %}  

@@ -16,7 +16,7 @@
     </ul>
     
     <div class="row">
-      <div class="span6">    
+      <div class="span7">    
 
         <form action="{{ path('admin_flat_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="well form-horizontal">
             <fieldset>
@@ -29,12 +29,10 @@
 
         <form action="{{ path('admin_flat_delete', { 'id': entity.id }) }}" method="post">
            {{ form_widget(delete_form) }}
-               <button class="btn btn-mini btn-danger" type="submit">Удалить объект</button>
+           <button class="btn btn-mini btn-danger" type="submit">Удалить объект</button>
         </form>                                                     
       </div>          
-       
-            
-      <div class="span6">          
+      <div class="span5">          
         {% if entity.documents|length > 0 %}         
         <div id="myCarousel" class="carousel slide">
           <div class="carousel-inner">
@@ -43,7 +41,14 @@
             <div class="item {% if loop.first %} active {% endif %}">
                 <img src="{{ doc.webpath }}" alt=""/>
                 <div class="carousel-caption">                    
-                    <h4><span class="badge" style="float:right">{{ loop.index }}/{{ loop.length}}</span>{{ doc.title }}</h4>
+                    <h4>
+                        <span class="badge">{{ loop.index }}/{{ loop.length}}</span>
+                        {{ doc.title }}
+                        <form style="float:right" action="{{ path('admin_document_delete', { 'id': doc.id }) }}" method="post">
+                            {{ form_widget(delete_form) }}
+                            <button class="btn btn-mini btn-danger" type="submit">Удалить фотографию</button>
+                        </form>                        
+                    </h4>
                     {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}
                 </div>
             </div>
@@ -55,30 +60,12 @@
           <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
           {% endif %}
         </div>      
-              
-        <ul class="thumbnails">
-          {% for doc in entity.documents %}                
-          <li class="span2">              
-            <a onclick="$('#myCarousel').carousel({{loop.index-1}})" class="thumbnail">
-              <img src="{{ doc.webpath }}" alt=""/>
-            </a>
-            
-            <form action="{{ path('admin_document_delete', { 'id': doc.id }) }}" method="post">
-                {{ form_widget(delete_form) }}
-                    <p align="right">
-                        <a href="#">удалить</a>
-                        <span class="badge">{{ loop.index }}/{{ loop.length}}</span>
-                    </p>
-                
-            </form>
-          </li>          
-          {% endfor %}          
-        </ul>          
-              
+                           
         {% else %}
               Нет фотографий объекта.
         {% endif %}  
               
+        {% render "SpbRealityBundle:Document:new" %}
       </div>
             
     </div>
