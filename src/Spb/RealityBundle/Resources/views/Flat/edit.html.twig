@@ -63,7 +63,7 @@
                            
         {% endif %}  
               
-        {% render "SpbRealityBundle:Document:new" %}
+        {% render "SpbRealityBundle:Document:new" with { 'id' : entity.id } %}
       </div>
             
     </div>

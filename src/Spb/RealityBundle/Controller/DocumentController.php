@@ -57,12 +57,23 @@ class DocumentController extends Controller
     /**
      * Displays a form to create a new Document entity.
      *
-     * @Route("/new", name="admin_document_new")
+     * @Route("/{id}/new", name="admin_document_new")
      * @Template()
      */
-    public function newAction()
+    public function newAction($id)
     {
         $entity = new Document();
+        
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $realty = $em->getRepository('SpbRealityBundle:Realty')->find($id);
+        
+        if (!$realty) {
+            throw $this->createNotFoundException('Unable to find Realty entity.');
+        }
+        
+        $entity->setRealty($realty);
+        
         $form   = $this->createForm(new DocumentType(), $entity);
 
         return array(
@@ -90,7 +101,7 @@ class DocumentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_document_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_flat_edit', array('id' => $entity->getRealty()->getId())));
             
         }
 
@@ -184,12 +195,14 @@ class DocumentController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Document entity.');
             }
+            
+            $id = $entity->getRealty()->getId();
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_document'));
+        return $this->redirect($this->generateUrl('admin_flat_edit', array('id' => $id)));
     }
 
     private function createDeleteForm($id)
