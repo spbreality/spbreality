@@ -33,7 +33,6 @@ class Document
     
     /**
      * @ORM\Column(name="c06_name", type="string", length=64)
-     * @Assert\NotBlank
      */
     private $name;
 

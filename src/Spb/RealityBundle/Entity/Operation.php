@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Spb\RealityBundle\Entity\Operation
  *
- * @ORM\Table(name="t06_operation")
+ * @ORM\Table(name="t09_operation")
  * @ORM\Entity
  */
 class Operation
@@ -15,7 +15,7 @@ class Operation
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="c06_id", type="integer")
+     * @ORM\Column(name="c09_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,14 +24,14 @@ class Operation
     /**
      * @var string $name
      *
-     * @ORM\Column(name="c06_name", type="string", length=32)
+     * @ORM\Column(name="c09_name", type="string", length=32)
      */
     private $name;
 
     /**
      * @var string $abbr
      *
-     * @ORM\Column(name="c06_abbr", type="string", length=4)
+     * @ORM\Column(name="c09_abbr", type="string", length=4)
      */
     private $abbr;
 

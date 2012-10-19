@@ -34,7 +34,7 @@ class Realty
     
     /**
      * @ORM\ManyToOne(targetEntity="Operation")
-     * @ORM\JoinColumn(name="c07_operation_id", referencedColumnName="c06_id")
+     * @ORM\JoinColumn(name="c07_operation_id", referencedColumnName="c09_id")
      */
     private $operation;
     
