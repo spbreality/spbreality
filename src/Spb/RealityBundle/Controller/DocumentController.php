@@ -178,10 +178,10 @@ class DocumentController extends Controller
     /**
      * Deletes a Document entity.
      *
-     * @Route("/{id}/delete", name="admin_document_delete")
+     * @Route("/{id}/{realty}/delete", name="admin_document_delete")
      * @Method("post")
      */
-    public function deleteAction($id)
+    public function deleteAction($id, $realty)
     {
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
@@ -196,13 +196,11 @@ class DocumentController extends Controller
                 throw $this->createNotFoundException('Unable to find Document entity.');
             }
             
-            $id = $entity->getRealty()->getId();
-
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_flat_edit', array('id' => $id)));
+        return $this->redirect($this->generateUrl('admin_flat_edit', array('id' => $realty)));
     }
 
     private function createDeleteForm($id)

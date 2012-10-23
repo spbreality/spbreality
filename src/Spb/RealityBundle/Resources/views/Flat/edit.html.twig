@@ -44,7 +44,7 @@
                     <h4>
                         <span class="badge">{{ loop.index }}/{{ loop.length}}</span>
                         {{ doc.title }}
-                        <form style="float:right" action="{{ path('admin_document_delete', { 'id': doc.id }) }}" method="post">
+                        <form style="float:right" action="{{ path('admin_document_delete', { 'id': doc.id, 'realty': entity.id}) }}" method="post">
                             {{ form_widget(delete_form) }}
                             <button class="btn btn-mini btn-danger" type="submit">Удалить фотографию</button>
                         </form>                        
