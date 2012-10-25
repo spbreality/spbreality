@@ -16,43 +16,6 @@ use Spb\RealityBundle\Form\DocumentType;
  */
 class DocumentController extends Controller
 {
-    /**
-     * Lists all Document entities.
-     *
-     * @Route("/", name="admin_document")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entities = $em->getRepository('SpbRealityBundle:Document')->findAll();
-
-        return array('entities' => $entities);
-    }
-
-    /**
-     * Finds and displays a Document entity.
-     *
-     * @Route("/{id}/show", name="admin_document_show")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('SpbRealityBundle:Document')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Document entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
-    }
 
     /**
      * Displays a form to create a new Document entity.
@@ -75,7 +38,6 @@ class DocumentController extends Controller
         $entity->setRealty($realty);
         
         $form   = $this->createForm(new DocumentType(), $entity);
-
         return array(
             'entity' => $entity,
             'form'   => $form->createView()
@@ -87,7 +49,6 @@ class DocumentController extends Controller
      *
      * @Route("/create", name="admin_document_create")
      * @Method("post")
-     * @Template("SpbRealityBundle:Document:new.html.twig")
      */
     public function createAction()
     {
@@ -97,117 +58,40 @@ class DocumentController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('admin_flat_edit', array('id' => $entity->getRealty()->getId())));
             
         }
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView()
-        );
-    }
+        $realty = $entity->getRealty();
 
-    /**
-     * Displays a form to edit an existing Document entity.
-     *
-     * @Route("/{id}/edit", name="admin_document_edit")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('SpbRealityBundle:Document')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Document entity.');
-        }
-
-        $editForm = $this->createForm(new DocumentType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-     * Edits an existing Document entity.
-     *
-     * @Route("/{id}/update", name="admin_document_update")
-     * @Method("post")
-     * @Template("SpbRealityBundle:Document:edit.html.twig")
-     */
-    public function updateAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('SpbRealityBundle:Document')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Document entity.');
-        }
-
-        $editForm   = $this->createForm(new DocumentType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        $request = $this->getRequest();
-
-        $editForm->bindRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('admin_document_edit', array('id' => $id)));
-        }
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return $this->redirect($this->generateUrl('admin_' . $realty->getRealtyType() . '_edit', array('id' => $realty->getId())));
     }
 
     /**
      * Deletes a Document entity.
      *
-     * @Route("/{id}/{realty}/delete", name="admin_document_delete")
-     * @Method("post")
+     * @Route("/{id}/delete", name="admin_document_delete")
      */
-    public function deleteAction($id, $realty)
+    public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($id);
-        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        $entity = $em->getRepository('SpbRealityBundle:Document')->find($id);        
 
-        $form->bindRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('SpbRealityBundle:Document')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Document entity.');
-            }
-            
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Document entity.');
         }
 
-        return $this->redirect($this->generateUrl('admin_flat_edit', array('id' => $realty)));
+        $realty = $entity->getRealty();
+        $rid = $realty->getId();
+        $object = $realty->getRealtyType();
+        
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('admin_' . $object . '_edit', array('id' => $rid)));        
     }
 
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
-        ;
-    }
 }

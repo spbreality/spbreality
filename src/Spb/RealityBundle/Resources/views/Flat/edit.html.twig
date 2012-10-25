@@ -32,6 +32,7 @@
            <button class="btn btn-mini btn-danger" type="submit">Удалить объект</button>
         </form>                                                     
       </div>          
+            
       <div class="span5">          
         {% if entity.documents|length > 0 %}         
         <div id="myCarousel" class="carousel slide">
@@ -44,10 +45,7 @@
                     <h4>
                         <span class="badge">{{ loop.index }}/{{ loop.length}}</span>
                         {{ doc.title }}
-                        <form style="float:right" action="{{ path('admin_document_delete', { 'id': doc.id, 'realty': entity.id}) }}" method="post">
-                            {{ form_widget(delete_form) }}
-                            <button class="btn btn-mini btn-danger" type="submit">Удалить фотографию</button>
-                        </form>                        
+                        <a class="btn btn-mini btn-danger" href="{{ path('admin_document_delete', { 'id': doc.id }) }}" style="float:right">Удалить фотографию</a>
                     </h4>
                     {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}
                 </div>
@@ -64,6 +62,7 @@
         {% endif %}  
               
         {% render "SpbRealityBundle:Document:new" with { 'id' : entity.id } %}
+
       </div>
             
     </div>

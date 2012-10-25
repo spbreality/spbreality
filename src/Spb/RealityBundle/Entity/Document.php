@@ -27,6 +27,7 @@ class Document
     private $id;
 
     /**
+     * @Assert\NotBlank
      * @Assert\File(maxSize="6000000")
      */
     public $file;

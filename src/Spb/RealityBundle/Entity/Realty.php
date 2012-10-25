@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="t07_realty")
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="c07_object", type="string", length=32)
- * @ORM\DiscriminatorMap({"объект" = "Realty", "квартира" = "Flat", "комната" = "Room"})
+ * @ORM\DiscriminatorColumn(name="с07_object", type="string", length=32)
+ * @ORM\DiscriminatorMap({"room"="Room", "flat"="Flat"})
  */
 
 class Realty
@@ -24,7 +24,7 @@ class Realty
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+      
     /**
      * @var decimal $price
      *
@@ -32,6 +32,7 @@ class Realty
      */
     private $price;
     
+   
     /**
      * @ORM\ManyToOne(targetEntity="Operation")
      * @ORM\JoinColumn(name="c07_operation_id", referencedColumnName="c09_id")
@@ -229,5 +230,15 @@ class Realty
     public function getDocuments()
     {
         return $this->documents;
+    }
+    
+    /**
+     * Get realty type (c07_object)
+     *
+     * @return string 
+     */
+    public function getRealtyType()
+    {
+        return "realty";
     }
 }
