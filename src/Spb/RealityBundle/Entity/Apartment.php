@@ -75,6 +75,13 @@ abstract class Apartment extends Realty
      */
     private $building_type;
 
+    /**
+     * тип санузла
+     * 
+     * @ORM\ManyToOne(targetEntity="BathunitType")
+     * @ORM\JoinColumn(name="c10_bathunit_type_id", referencedColumnName="c11_id")
+     */
+    private $bathunit_type;
 
     /**
      * Set rooms
@@ -214,5 +221,25 @@ abstract class Apartment extends Realty
     public function getBuildingType()
     {
         return $this->building_type;
+    }
+
+    /**
+     * Set bathunit_type
+     *
+     * @param Spb\RealityBundle\Entity\BathunitType $bathunitType
+     */
+    public function setBathunitType(\Spb\RealityBundle\Entity\BathunitType $bathunitType)
+    {
+        $this->bathunit_type = $bathunitType;
+    }
+
+    /**
+     * Get bathunit_type
+     *
+     * @return Spb\RealityBundle\Entity\BathunitType 
+     */
+    public function getBathunitType()
+    {
+        return $this->bathunit_type;
     }
 }

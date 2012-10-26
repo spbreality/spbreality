@@ -3,21 +3,24 @@
 {% block body %}
 <div class="container">
 
+{% block rtypehead %}       
     <ul class="breadcrumb">
         <li>
             <a href="#">Жилая недвижимость</a><span class="divider">/</span>
         </li>
         <li>
-            <a href="{{ path('admin_flat') }}">Квартиры</a><span class="divider">/</span>
+            <a href="{{ path('admin_home') }}">Объекты недвижимости</a><span class="divider">/</span>
         </li>
         <li class="active">
-            Полная информация об объекте
+            Полная информация
         </li>
     </ul>
-
+{% endblock %}
+    
     <div class="row">
       <div class="span6">                
-        
+
+{% block rtypebody %}          
         <table class="table table-striped table-bordered">
             <tbody>
                 <tr>
@@ -29,45 +32,12 @@
                     <td>{{ entity.operation }}</td>
                 </tr>
                 <tr>
-                    <th>Тип дома</th>
-                    <td>{{ entity.buildingstage }}</td>
-                </tr>
-                <tr>
                     <th>Район</th>
                     <td>{{ entity.district }}</td>
                 </tr>
                 <tr>
                     <th>Адрес</th>
                     <td>{{ entity.address }}</td>
-                </tr>
-                
-                <tr>
-                    <th>Количество комнат</th>
-                    <td>{{ entity.rooms }}</td>
-                </tr>
-                <tr>
-                    <th>Этажность</th>
-                    <td>{{ entity.floor }}/{{ entity.floors }}</td>
-                </tr>
-                <tr>
-                    <th>Тип/материал дома</th>
-                    <td>{{ entity.buildingtype }}</td>
-                </tr>
-                <tr>
-                    <th>Общая площадь</th>
-                    <td>{{ entity.s }}</td>
-                </tr>
-                <tr>
-                    <th>Жилая площадь</th>
-                    <td>{{ entity.sl }}</td>
-                </tr>
-                <tr>
-                    <th>Площадь кухни</th>
-                    <td>{{ entity.sk }}</td>
-                </tr>
-                <tr>
-                    <th>Санузел</th>
-                    <td>{{ entity.bathunittype }}</td>
                 </tr>
                 <tr>
                     <th>Цена</th>
@@ -83,7 +53,8 @@
                 </tr>
             </tbody>
         </table>
-
+{% endblock %}
+          
         <div class="row">
             <div class="span3">
                 <form action="{{ path('admin_flat_delete', { 'id': entity.id }) }}" method="post">

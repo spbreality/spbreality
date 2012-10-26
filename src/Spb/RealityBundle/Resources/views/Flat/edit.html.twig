@@ -25,13 +25,10 @@
                     <button type="submit" class="btn btn-primary">Изменить</button>
                 </div>
             </fieldset>                       
+            <a href="{{ path('admin_flat_show', { 'id': entity.id }) }}" style="float:right"> Показать объект</a>
         </form>
-
-        <form action="{{ path('admin_flat_delete', { 'id': entity.id }) }}" method="post">
-           {{ form_widget(delete_form) }}
-           <button class="btn btn-mini btn-danger" type="submit">Удалить объект</button>
-        </form>                                                     
-      </div>          
+          
+      </div>  
             
       <div class="span5">          
         {% if entity.documents|length > 0 %}         

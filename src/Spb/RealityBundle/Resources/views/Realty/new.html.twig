@@ -8,14 +8,14 @@
             <a href="#">Жилая недвижимость</a><span class="divider">/</span>
         </li>
         <li>
-            <a href="{{ path('admin_room') }}">Комнаты</a><span class="divider">/</span>
+            <a href="{{ path('admin_realty', { 'rtype': entity.realtytype }) }}">Объекты</a><span class="divider">/</span>
         </li>
         <li class="active">
             Добавить
         </li>
     </ul>
 
-    <form action="{{ path('admin_room_create') }}" method="post" {{ form_enctype(form) }} class="well form-horizontal">
+    <form action="{{ path('admin_realty_create', { 'rtype': entity.realtytype }) }}" method="post" {{ form_enctype(form) }} class="well form-horizontal">
         <fieldset>
             {{ form_widget(form) }}
             <div class="form-actions">

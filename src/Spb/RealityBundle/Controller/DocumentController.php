@@ -38,6 +38,7 @@ class DocumentController extends Controller
         $entity->setRealty($realty);
         
         $form   = $this->createForm(new DocumentType(), $entity);
+        
         return array(
             'entity' => $entity,
             'form'   => $form->createView()
@@ -86,12 +87,12 @@ class DocumentController extends Controller
 
         $realty = $entity->getRealty();
         $rid = $realty->getId();
-        $object = $realty->getRealtyType();
+        $rtype = $realty->getRealtyType();
         
         $em->remove($entity);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('admin_' . $object . '_edit', array('id' => $rid)));        
+        return $this->redirect($this->generateUrl('admin_' . $rtype . '_edit', array('id' => $rid)));        
     }
 
 }

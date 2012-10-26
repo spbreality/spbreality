@@ -1,22 +1,68 @@
-<h1>Room edit</h1>
+{% extends '::base_hero.html.twig' %}
 
-<form action="{{ path('admin_room_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
-</form>
+{% block body %}
+<div class="container">
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_room') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('admin_room_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Жилая недвижимость</a><span class="divider">/</span>
+        </li>
+        <li>
+            <a href="{{ path('admin_room') }}">Комнаты</a><span class="divider">/</span>
+        </li>
+        <li class="active">
+            Редактировать объект
+        </li>
+    </ul>
+    
+    <div class="row">
+      <div class="span7">    
+
+        <form action="{{ path('admin_room_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="well form-horizontal">
+            <fieldset>
+                {{ form_widget(edit_form) }}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Изменить</button>
+                </div>
+            </fieldset>                  
+            <a href="{{ path('admin_room_show', { 'id': entity.id }) }}" style="float:right"> Показать объект</a>
         </form>
-    </li>
-</ul>
+                                                   
+      </div>          
+            
+      <div class="span5">          
+        {% if entity.documents|length > 0 %}         
+        <div id="myCarousel" class="carousel slide">
+          <div class="carousel-inner">
+        <!-- Carousel items -->
+            {% for doc in entity.documents %}
+            <div class="item {% if loop.first %} active {% endif %}">
+                <img src="{{ doc.webpath }}" alt=""/>
+                <div class="carousel-caption">                    
+                    <h4>
+                        <span class="badge">{{ loop.index }}/{{ loop.length}}</span>
+                        {{ doc.title }}
+                        <a class="btn btn-mini btn-danger" href="{{ path('admin_document_delete', { 'id': doc.id }) }}" style="float:right">Удалить фотографию</a>
+                    </h4>
+                    {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+          <!-- Carousel nav -->
+          {% if entity.documents|length > 1 %}
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          {% endif %}
+        </div>      
+                           
+        {% endif %}  
+              
+        {% render "SpbRealityBundle:Document:new" with { 'id' : entity.id } %}
+
+      </div>
+            
+    </div>
+
+</div>
+{% endblock %}

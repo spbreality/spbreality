@@ -1,23 +1,20 @@
-{% extends '::base_hero.html.twig' %}
+{% extends 'SpbRealityBundle:Realty:show.html.twig' %}
 
-{% block body %}
-<div class="container">
-
+{% block rtypehead %}    
     <ul class="breadcrumb">
         <li>
             <a href="#">Жилая недвижимость</a><span class="divider">/</span>
         </li>
         <li>
-            <a href="{{ path('admin_flat') }}">Квартиры</a><span class="divider">/</span>
+            <a href="{{ path('admin_realty' , { 'rtype': 'flat' }) }}">Квартиры</a><span class="divider">/</span>
         </li>
         <li class="active">
-            Полная информация об объекте
+            Полная информация о квартире
         </li>
     </ul>
+{% endblock %}
 
-    <div class="row">
-      <div class="span6">                
-        
+{% block rtypebody %}        
         <table class="table table-striped table-bordered">
             <tbody>
                 <tr>
@@ -83,52 +80,4 @@
                 </tr>
             </tbody>
         </table>
-
-        <div class="row">
-            <div class="span3">
-                <form action="{{ path('admin_flat_delete', { 'id': entity.id }) }}" method="post">
-                   {{ form_widget(delete_form) }}
-                   <button class="btn btn-mini btn-danger" type="submit">Удалить объект</button>
-                </form>
-            </div>
-            <div class="span3">
-                <a href="{{ path('admin_flat_edit', { 'id': entity.id }) }}" style="float:right"> Редактировать объект</a>                      
-            </div>
-        </div>
-              
-      </div>
-            
-      <div class="span6">          
-        {% if entity.documents|length > 0 %}         
-        <div id="myCarousel" class="carousel slide">
-          <div class="carousel-inner">
-        <!-- Carousel items -->
-            {% for doc in entity.documents %}
-            <div class="item {% if loop.first %} active {% endif %}">
-                <img src="{{ doc.webpath }}" alt=""/>
-                {% if (doc.title is not empty or doc.desc is not empty) %}
-                <div class="carousel-caption">                    
-                    <h4><span class="badge" style="float:right">{{ loop.index }}/{{ loop.length}}</span>{{ doc.title }}</h4>
-                    {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-          </div>
-          <!-- Carousel nav -->
-          {% if entity.documents|length > 1 %}
-          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-          {% endif %}
-        </div>
-        
-        {% else %}
-              Нет фотографий объекта.
-        {% endif %}  
-              
-      </div>
-            
-           
-    </div>
-</div>
 {% endblock %}

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="t07_realty")
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="с07_object", type="string", length=32)
- * @ORM\DiscriminatorMap({"room"="Room", "flat"="Flat"})
+ * @ORM\DiscriminatorColumn(name="c07_object", type="string", length=32)
+ * @ORM\DiscriminatorMap({"комната"="Room", "квартира"="Flat"})
  */
 
 class Realty
