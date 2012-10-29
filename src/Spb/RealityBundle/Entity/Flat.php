@@ -47,9 +47,22 @@ class Flat extends Apartment
      *
      * @return string 
      */
-    public function getRealtyType()
+    public function getRealtyType($lang = "en", $pl = "single", $camel = "no")
     {
-        return "flat";
+        $rstr = "flat";        
+        
+        if ($lang === "ru") {
+            if($pl === "plural") {
+                $rstr = "квартиры";
+            }
+            $rstr = "квартира";                
+        }
+        
+        if ($camel === "camel") {
+            $rstr = ucwords($rstr);
+        }
+        
+        return $rstr;
     }
 
 }

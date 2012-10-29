@@ -1,0 +1,20 @@
+{% extends '::base_hero.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Жилая недвижимость</a><span class="divider">/</span>
+        </li>
+        <li class="active">
+            {% block rtype_ru_pl_camel %}Объекты{% endblock %}
+        </li>
+    </ul>
+
+{% block rtypeblock %}              
+
+{% endblock %}
+        
+</div>
+{% endblock %}

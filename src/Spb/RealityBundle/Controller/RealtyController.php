@@ -6,11 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Spb\RealityBundle\Entity\Flat;
+use Spb\RealityBundle\Entity\Room;
+use Spb\RealityBundle\Form\FlatType;
+use Spb\RealityBundle\Form\RoomType;
 
 /**
  * Контроллер объектов недвижимости.
  *
- * @Route("/adm")
+ * @Route("/admin")
  */
 class RealtyController extends Controller
 {
@@ -110,9 +114,20 @@ class RealtyController extends Controller
      */
     public function createAction($rtype)
     {
-        $entity  = new Flat();
+        switch ($rtype) {
+            case "flat":
+                $entity = new Flat();
+                $form   = $this->createForm(new FlatType(), $entity);
+                break;
+            case "room":
+                $entity = new Room();
+                $form   = $this->createForm(new RoomType(), $entity);
+                break;
+            default:
+                throw $this->createNotFoundException('Объект недвижимости неизвестен.');
+                break;            
+        }
         $request = $this->getRequest();
-        $form    = $this->createForm(new FlatType(), $entity);
         $form->bindRequest($request);
 
         if ($form->isValid()) {
@@ -120,7 +135,7 @@ class RealtyController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_flat_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_' . $rtype . '_show', array('id' => $entity->getId())));
             
         }
 
@@ -130,6 +145,146 @@ class RealtyController extends Controller
         );
     }
     
+    /**
+     * Отобразить форму редактирования объекта недвижимости.
+     *
+     * @Route("/{rtype}/{id}/edit", name="admin_realty_edit")
+     * @Template()
+     */
+    public function editAction($rtype, $id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        switch ($rtype) {
+            case "flat":
+                $entity = $em->getRepository('SpbRealityBundle:Flat')->find($id);
+                break;
+            case "room":
+                $entity = $em->getRepository('SpbRealityBundle:Room')->find($id);
+                break;
+            default:
+                throw $this->createNotFoundException('Объект недвижимости не определен.');
+                break;
+        }
+        
+        if (!$entity) {
+            throw $this->createNotFoundException('Объект недвижимости не найден.');
+        }
+
+        switch ($rtype) {
+            case "flat":
+                $editForm = $this->createForm(new FlatType(), $entity);
+                break;
+            case "room":
+                $editForm = $this->createForm(new RoomType(), $entity);
+                break;
+            default:
+                throw $this->createNotFoundException('Объект недвижимости не определен.');
+                break;
+        }
+        
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+        );
+        
+    }
+
+    /**
+     * Редактировать объект недвижимости
+     *
+     * @Route("/{rtype}/{id}/update", name="admin_realty_update")
+     * @Method("post")
+     * @Template("SpbRealityBundle:Flat:edit.html.twig")
+     */
+    public function updateAction($rtype, $id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        switch ($rtype) {
+            case "flat":
+                $entity = $em->getRepository('SpbRealityBundle:Flat')->find($id);
+                break;
+            case "room":
+                $entity = $em->getRepository('SpbRealityBundle:Room')->find($id);
+                break;
+            default:
+                throw $this->createNotFoundException('Объект недвижимости не определен.');
+                break;
+        }
+        
+        if (!$entity) {
+            throw $this->createNotFoundException('Объект недвижимости не найден.');
+        }
+
+        switch ($rtype) {
+            case "flat":
+                $editForm = $this->createForm(new FlatType(), $entity);
+                break;
+            case "room":
+                $editForm = $this->createForm(new RoomType(), $entity);
+                break;
+            default:
+                throw $this->createNotFoundException('Объект недвижимости не определен.');
+                break;
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        $request = $this->getRequest();
+        $editForm->bindRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_realty_edit', array('rtype' => $rtype, 'id' => $id)));
+        }
+
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+    
+    /**
+     * Удаляет объект недвижимости.
+     *
+     * @Route("/{rtype}/{id}/delete", name="admin_realty_delete")
+     * @Method("post")
+     */
+    public function deleteAction($rtype, $id)
+    {
+        $form = $this->createDeleteForm($id);
+        $request = $this->getRequest();
+
+        $form->bindRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getEntityManager();
+
+            switch ($rtype) {
+                case "flat":
+                    $entity = $em->getRepository('SpbRealityBundle:Flat')->find($id);
+                    break;
+                case "room":
+                    $entity = $em->getRepository('SpbRealityBundle:Room')->find($id);
+                    break;
+                default:
+                    throw $this->createNotFoundException('Объект недвижимости не определен.');
+                    break;
+            }
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Объект недвижимости не найден.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_realty', array('rtype' => $rtype)));
+    }
     
     private function createDeleteForm($id)
     {

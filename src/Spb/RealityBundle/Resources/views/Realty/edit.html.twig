@@ -8,7 +8,7 @@
             <a href="#">Жилая недвижимость</a><span class="divider">/</span>
         </li>
         <li>
-            <a href="{{ path('admin_flat') }}">Квартиры</a><span class="divider">/</span>
+            <a href="{{ path('admin_realty', { 'rtype': entity.realtytype }) }}">{{ entity.realtytype}}</a><span class="divider">/</span>
         </li>
         <li class="active">
             Редактировать объект
@@ -18,14 +18,14 @@
     <div class="row">
       <div class="span7">    
 
-        <form action="{{ path('admin_flat_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="well form-horizontal">
+        <form action="{{ path('admin_realty_update', { 'rtype': entity.realtytype, 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="well form-horizontal">
             <fieldset>
                 {{ form_widget(edit_form) }}
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Изменить</button>
                 </div>
             </fieldset>                       
-            <a href="{{ path('admin_flat_show', { 'id': entity.id }) }}" style="float:right"> Показать объект</a>
+            <a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" style="float:right"> Показать объект</a>
         </form>
           
       </div>  

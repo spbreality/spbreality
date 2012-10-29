@@ -68,7 +68,7 @@ class DocumentController extends Controller
 
         $realty = $entity->getRealty();
 
-        return $this->redirect($this->generateUrl('admin_' . $realty->getRealtyType() . '_edit', array('id' => $realty->getId())));
+        return $this->redirect($this->generateUrl('admin_realty_edit', array('rtype' => $realty->getRealtyType(), 'id' => $realty->getId())));
     }
 
     /**
@@ -92,7 +92,7 @@ class DocumentController extends Controller
         $em->remove($entity);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('admin_' . $rtype . '_edit', array('id' => $rid)));        
+        return $this->redirect($this->generateUrl('admin_realty_edit', array('rtype' => $rtype, 'id' => $rid)));        
     }
 
 }

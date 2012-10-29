@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({"комната"="Room", "квартира"="Flat"})
  */
 
-class Realty
+abstract class Realty
 {
     /**
      * @var integer $id
@@ -237,8 +237,21 @@ class Realty
      *
      * @return string 
      */
-    public function getRealtyType()
+    public function getRealtyType($lang = "en", $pl = "single", $camel = "lowcase")
     {
-        return "realty";
+        $rstr = "realty";        
+        
+        if ($lang === "ru") {
+            if($pl === "plural") {
+                $rstr = "объект недвижимости";
+            }
+            $rstr = "объекты недвижимости";                
+        }
+        
+        if ($camel === "camel") {
+            $rstr = ucwords($rstr);
+        }
+        
+        return $rstr;
     }
 }

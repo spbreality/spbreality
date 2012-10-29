@@ -104,9 +104,22 @@ class Room extends Apartment
      *
      * @return string 
      */
-    public function getRealtyType()
+    public function getRealtyType($lang = "en", $pl = "single", $camel = "no")
     {
-        return "room";
+        $rstr = "room";        
+        
+        if ($lang === "ru") {
+            if($pl === "plural") {
+                $rstr = "комнаты";
+            }
+            $rstr = "комната";                
+        }
+        
+        if ($camel === "camel") {
+            $rstr = ucwords($rstr);
+        }
+        
+        return $rstr;
     }
     
 
