@@ -1,19 +1,5 @@
 {% extends 'SpbRealityBundle:Realty:show.html.twig' %}
 
-{% block rtypehead %} 
-    <ul class="breadcrumb">
-        <li>
-            <a href="#">Жилая недвижимость</a><span class="divider">/</span>
-        </li>
-        <li>
-            <a href="{{ path('admin_realty' , { 'rtype': 'room' }) }}">Комнаты</a><span class="divider">/</span>
-        </li>
-        <li class="active">
-            Полная информация о комнате
-        </li>
-    </ul>
-{% endblock %}
-
 {% block rtypebody %}        
         <table class="table table-striped table-bordered">
             <tbody>

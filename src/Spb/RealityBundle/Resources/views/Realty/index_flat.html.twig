@@ -10,13 +10,13 @@
             <th colspan="2">Тип</th>
             <th>Район</th>
             <th>Адрес</th>
-            <th>К</th>
+            <th><abbr title="Количество комнат">К</abbr></th>
             <th>Этаж</th>
             <th>Дом</th>
             <th>общ.</th>
             <th>жил.</th>
             <th>кух.</th>
-            <th title="Санузел">С/У</th>
+            <th><abbr title="Санузел">С/У</abbr></th>
             <th>Цена</th>
             <th>Доп.сведения</th>
             <th>Действия</th>
@@ -26,17 +26,17 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" title="Номер объекта">{{ entity.id }}</a></td>            
-            <td><a href="#" title="{{ entity.operation }}">{{ entity.operation.abbr }}</a></td>
-            <td><a href="#" title="{{ entity.buildingstage.name }}">{{ entity.buildingstage.abbr }}</a></td>            
+            <td><abbr title="{{ entity.operation }}"  class="initialism">{{ entity.operation.abbr }}</abbr></td>
+            <td><abbr title="{{ entity.buildingstage.name }}"  class="initialism">{{ entity.buildingstage.abbr }}</abbr></td>            
             <td>{{ entity.district }}</td>
             <td>{{ entity.address }}</td>          
             <td>{{ entity.rooms }}</td>
             <td>{{ entity.floor }}/{{ entity.floors }}</td>
-            <td><a href="#" title="{{ entity.buildingtype.name }}">{{ entity.buildingtype.abbr }}</a></td>           
+            <td><abbr title="{{ entity.buildingtype.name }}" class="initialism">{{ entity.buildingtype.abbr }}</abbr></td>           
             <td>{{ entity.s }}</td>
             <td>{{ entity.sl }}</td>
             <td>{{ entity.sk }}</td>
-            <td><a href="#" title="{{ entity.bathunittype.name }}">{{ entity.bathunittype.abbr }}</a></td>
+            <td><abbr title="{{ entity.bathunittype.name }}" class="initialism">{{ entity.bathunittype.abbr }}</abbr></td>
             <td>{{ entity.price }}</td>            
             <td>{{ entity.sdesc }}</td>
             <td>
@@ -48,7 +48,7 @@
     </tbody>
 </table>
 
-
 <a href="{{ path('admin_realty_new', { 'rtype': "flat" }) }}"> Добавить квартиру</a>
 
+          
 {% endblock %}

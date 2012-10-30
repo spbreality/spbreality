@@ -14,15 +14,14 @@ use Spb\RealityBundle\Form\RoomType;
 /**
  * Контроллер объектов недвижимости.
  *
- * @Route("/admin")
+ * @Route("/admin/{rtype}", requirements={"rtype" = "(room|flat|land)"})
  */
 class RealtyController extends Controller
 {
     /**
      * Показать все объекты недвижимости определенного типа.
      *
-     * @Route("/", defaults={"rtype" = "flat"}, name="admin_home")
-     * @Route("/{rtype}", requirements={"rtype" = "(room|flat)"}, name="admin_realty")
+     * @Route("/", name="admin_realty")
      */
     public function indexAction($rtype)
     {
@@ -46,7 +45,7 @@ class RealtyController extends Controller
     /**
      * Найти и отоброзить объект недвижимости
      *
-     * @Route("/{rtype}/{id}/show", name="admin_realty_show")
+     * @Route("/{id}/show", name="admin_realty_show")
      * @Template()
      */
     public function showAction($rtype, $id)
@@ -80,7 +79,7 @@ class RealtyController extends Controller
     /**
      * Форма по созданию нового объекта недвижимости.
      *
-     * @Route("/{rtype}/new", name="admin_realty_new")
+     * @Route("/new", name="admin_realty_new")
      * @Template()
      */
     public function newAction($rtype)
@@ -108,7 +107,7 @@ class RealtyController extends Controller
     /**
      * Создать новый объект недвижимости.
      *
-     * @Route("/{rtype}/create", name="admin_realty_create")
+     * @Route("/create", name="admin_realty_create")
      * @Method("post")
      * @Template("SpbRealityBundle:Realty:new.html.twig")
      */
@@ -135,7 +134,7 @@ class RealtyController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_' . $rtype . '_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_realty_show', array('rtype' => $rtype, 'id' => $entity->getId())));
             
         }
 
@@ -148,7 +147,7 @@ class RealtyController extends Controller
     /**
      * Отобразить форму редактирования объекта недвижимости.
      *
-     * @Route("/{rtype}/{id}/edit", name="admin_realty_edit")
+     * @Route("/{id}/edit", name="admin_realty_edit")
      * @Template()
      */
     public function editAction($rtype, $id)
@@ -193,7 +192,7 @@ class RealtyController extends Controller
     /**
      * Редактировать объект недвижимости
      *
-     * @Route("/{rtype}/{id}/update", name="admin_realty_update")
+     * @Route("/{id}/update", name="admin_realty_update")
      * @Method("post")
      * @Template("SpbRealityBundle:Flat:edit.html.twig")
      */
@@ -250,7 +249,7 @@ class RealtyController extends Controller
     /**
      * Удаляет объект недвижимости.
      *
-     * @Route("/{rtype}/{id}/delete", name="admin_realty_delete")
+     * @Route("/{id}/delete", name="admin_realty_delete")
      * @Method("post")
      */
     public function deleteAction($rtype, $id)

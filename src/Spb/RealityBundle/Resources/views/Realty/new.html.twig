@@ -5,13 +5,13 @@
 
     <ul class="breadcrumb">
         <li>
-            <a href="#">Жилая недвижимость</a><span class="divider">/</span>
+            Жилая недвижимость<span class="divider">/</span>
         </li>
         <li>
-            <a href="{{ path('admin_realty', { 'rtype': entity.realtytype }) }}">{{ entity.realtytype("ru", "plural") }}</a><span class="divider">/</span>
+            <a href="{{ path('admin_realty', { 'rtype': entity.realtytype }) }}">{{ entity.name("plural", "camel") }}</a><span class="divider">/</span>
         </li>
         <li class="active">
-            добавить
+            Добавить
         </li>
     </ul>
 

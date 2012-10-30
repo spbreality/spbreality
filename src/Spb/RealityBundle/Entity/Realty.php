@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="c07_object", type="string", length=32)
- * @ORM\DiscriminatorMap({"комната"="Room", "квартира"="Flat"})
+ * @ORM\DiscriminatorMap({"комната"="Room", "квартира"="Flat", "участок"="Land"})
  */
 
 abstract class Realty
@@ -237,21 +237,50 @@ abstract class Realty
      *
      * @return string 
      */
-    public function getRealtyType($lang = "en", $pl = "single", $camel = "lowcase")
+    public function getRealtyType()
     {
-        $rstr = "realty";        
+        return "realty";
+    }
+    
+    /**
+     * Get realty type
+     *
+     * @return string 
+     */
+    public function getName($pl = "single", $camel = "no")
+    {
+        $rtype = $this->getRealtyType();
+        $name = "объект";
+        $names = "объекты";
         
-        if ($lang === "ru") {
-            if($pl === "plural") {
-                $rstr = "объект недвижимости";
-            }
-            $rstr = "объекты недвижимости";                
+        switch ($rtype) {
+            case "room":
+                $name = "комната";
+                $names = "комнаты";
+                break;
+            case "flat":
+                $name = "квартира";
+                $names = "квартиры";
+                break;
+            default:
+                break;
         }
         
+        if ($pl === "plural") {
+            $rstr = $names;
+        } else {
+            $rstr = $name;
+        }
+                
         if ($camel === "camel") {
-            $rstr = ucwords($rstr);
+            return $this->mb_ucwords($rstr);
         }
         
         return $rstr;
+    }
+    
+     private function mb_ucwords($str) {
+        $str = mb_convert_case($str, MB_CASE_TITLE, "UTF-8");
+        return ($str);
     }
 }
