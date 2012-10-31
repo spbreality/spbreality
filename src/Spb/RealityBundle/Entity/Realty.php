@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="c07_object", type="string", length=32)
- * @ORM\DiscriminatorMap({"комната"="Room", "квартира"="Flat", "участок"="Land"})
+ * @ORM\DiscriminatorMap({"комната"="Room", "квартира"="Flat", "участок"="Land", "дом"="House", "офис"="Office", "склад"="Storehouse"})
  */
 
 abstract class Realty
@@ -42,14 +42,14 @@ abstract class Realty
     /**
      * @var string $sdesc
      *
-     * @ORM\Column(name="c07_sdesc", type="string", length=255)
+     * @ORM\Column(name="c07_sdesc", type="string", length=255, nullable=true)
      */
     private $sdesc;
 
     /**
      * @var text $ldesc
      *
-     * @ORM\Column(name="c07_ldesc", type="text")
+     * @ORM\Column(name="c07_ldesc", type="text", nullable=true)
      */
     private $ldesc;
 
@@ -254,13 +254,33 @@ abstract class Realty
         $names = "объекты";
         
         switch ($rtype) {
+            case "flat":
+                $name = "квартира";
+                $names = "квартиры";
+                break;
             case "room":
                 $name = "комната";
                 $names = "комнаты";
                 break;
-            case "flat":
-                $name = "квартира";
-                $names = "квартиры";
+            case "land":
+                $name = "участок";
+                $names = "участки";
+                break;
+            case "house":
+                $name = "дом";
+                $names = "дома";
+                break;
+            case "office":
+                $name = "офис";
+                $names = "офисы";
+                break;
+            case "storehouse":
+                $name = "склад";
+                $names = "склады";
+                break;
+            case "building":
+                $name = "здание";
+                $names = "здания";
                 break;
             default:
                 break;

@@ -12,10 +12,6 @@
                     <td>{{ entity.operation }}</td>
                 </tr>
                 <tr>
-                    <th>Тип дома</th>
-                    <td>{{ entity.buildingstage }}</td>
-                </tr>
-                <tr>
                     <th>Район</th>
                     <td>{{ entity.district }}</td>
                 </tr>
@@ -23,35 +19,23 @@
                     <th>Адрес</th>
                     <td>{{ entity.address }}</td>
                 </tr>
-                
                 <tr>
-                    <th>Количество комнат</th>
-                    <td>{{ entity.rooms }}</td>
+                    <th>Площадь</th>
+                    <td>{{ entity.s }}</td>
                 </tr>
                 <tr>
-                    <th>Этажность</th>
+                    <th><abbr tittle="Этаж/Всего этажей">Этажность</abbr></th>
                     <td>{{ entity.floor }}/{{ entity.floors }}</td>
                 </tr>
                 <tr>
-                    <th>Тип/материал дома</th>
-                    <td>{{ entity.buildingtype }}</td>
+                    <th>Вход</th>
+                    <td>{{ entity.entrytype }}</td>
                 </tr>
                 <tr>
-                    <th>Жилая площадь</th>
-                    <td>{{ entity.sl }}</td>
+                    <th><abbr tittle="Состояние помещения">Сост.</abbr></th>
+                    <td>{{ entity.statetype }}</td>
                 </tr>
-                <tr>
-                    <th>Площадь кухни</th>
-                    <td>{{ entity.sk }}</td>
-                </tr>
-                <tr>
-                    <th>Санузел</th>
-                    <td>{{ entity.bathunittype }}</td>
-                </tr>                
-                <tr>
-                    <th><abbr title="Комнат/Съемщиков/Соседей">КСС</abbr></th>
-                    <td>{{ entity.nr }}/{{ entity.nt }}/{{ entity.nn }}</td>
-                </tr>                
+                {% block house %}{% endblock%}
                 <tr>
                     <th>Цена</th>
                     <td>{{ entity.price }}</td>

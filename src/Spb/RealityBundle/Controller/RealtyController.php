@@ -6,15 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Spb\RealityBundle\Entity\Flat;
-use Spb\RealityBundle\Entity\Room;
-use Spb\RealityBundle\Form\FlatType;
-use Spb\RealityBundle\Form\RoomType;
 
 /**
  * Контроллер объектов недвижимости.
  *
- * @Route("/admin/{rtype}", requirements={"rtype" = "(room|flat|land)"})
+ * @Route("/admin/{rtype}", requirements={"rtype" = "(room|flat|land|house|office|storehouse|building)"})
  */
 class RealtyController extends Controller
 {
@@ -27,18 +23,8 @@ class RealtyController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        switch ($rtype) {
-            case "flat":
-                $entities = $em->getRepository('SpbRealityBundle:Flat')->findAll();                
-                break;
-            case "room":
-                $entities = $em->getRepository('SpbRealityBundle:Room')->findAll();
-                break;
-            default:
-                throw $this->createNotFoundException('Объекты недвижимости неизвестны.');
-                break;
-        }
-        
+        $entities = $em->getRepository('SpbRealityBundle:' . ucwords($rtype))->findAll();
+
         return $this->render('SpbRealityBundle:Realty:index_' . $rtype . '.html.twig', array('entities' => $entities));
     }
     
@@ -52,17 +38,7 @@ class RealtyController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
         
-        switch ($rtype) {
-            case "flat":
-                $entity = $em->getRepository('SpbRealityBundle:Flat')->find($id);
-                break;
-            case "room":
-                $entity = $em->getRepository('SpbRealityBundle:Room')->find($id);
-                break;
-            default:
-                throw $this->createNotFoundException('Объект недвижимости неизвестен.');
-                break;
-        }
+        $entity = $em->getRepository('SpbRealityBundle:' . ucwords($rtype))->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Объект недвижимости не найден.');
@@ -84,20 +60,12 @@ class RealtyController extends Controller
      */
     public function newAction($rtype)
     {
-        switch ($rtype) {
-            case "flat":
-                $entity = new Flat();
-                $form   = $this->createForm(new FlatType(), $entity);
-                break;
-            case "room":
-                $entity = new Room();
-                $form   = $this->createForm(new RoomType(), $entity);
-                break;
-            default:
-                throw $this->createNotFoundException('Объект недвижимости неизвестен.');
-                break;
-        }
-
+        $realty = 'Spb\\RealityBundle\\Entity\\' . ucwords($rtype);
+        $formType = 'Spb\\RealityBundle\\Form\\' . ucwords($rtype) . 'Type';
+        
+        $entity = new $realty();
+        $form   = $this->createForm(new $formType, $entity);
+        
         return array(
             'entity' => $entity,
             'form'   => $form->createView()
@@ -113,19 +81,12 @@ class RealtyController extends Controller
      */
     public function createAction($rtype)
     {
-        switch ($rtype) {
-            case "flat":
-                $entity = new Flat();
-                $form   = $this->createForm(new FlatType(), $entity);
-                break;
-            case "room":
-                $entity = new Room();
-                $form   = $this->createForm(new RoomType(), $entity);
-                break;
-            default:
-                throw $this->createNotFoundException('Объект недвижимости неизвестен.');
-                break;            
-        }
+        $realty = 'Spb\\RealityBundle\\Entity\\' . ucwords($rtype);
+        $formType = 'Spb\\RealityBundle\\Form\\' . ucwords($rtype) . 'Type';
+        
+        $entity = new $realty();
+        $form   = $this->createForm(new $formType, $entity);
+
         $request = $this->getRequest();
         $form->bindRequest($request);
 
@@ -154,34 +115,17 @@ class RealtyController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        switch ($rtype) {
-            case "flat":
-                $entity = $em->getRepository('SpbRealityBundle:Flat')->find($id);
-                break;
-            case "room":
-                $entity = $em->getRepository('SpbRealityBundle:Room')->find($id);
-                break;
-            default:
-                throw $this->createNotFoundException('Объект недвижимости не определен.');
-                break;
-        }
-        
+        $entity = $em->getRepository('SpbRealityBundle:' . ucwords($rtype))->find($id);
+               
         if (!$entity) {
             throw $this->createNotFoundException('Объект недвижимости не найден.');
         }
 
-        switch ($rtype) {
-            case "flat":
-                $editForm = $this->createForm(new FlatType(), $entity);
-                break;
-            case "room":
-                $editForm = $this->createForm(new RoomType(), $entity);
-                break;
-            default:
-                throw $this->createNotFoundException('Объект недвижимости не определен.');
-                break;
-        }
+
+        $formType = 'Spb\\RealityBundle\\Form\\' . ucwords($rtype) . 'Type';
         
+        $editForm   = $this->createForm(new $formType, $entity);
+               
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
@@ -200,34 +144,15 @@ class RealtyController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        switch ($rtype) {
-            case "flat":
-                $entity = $em->getRepository('SpbRealityBundle:Flat')->find($id);
-                break;
-            case "room":
-                $entity = $em->getRepository('SpbRealityBundle:Room')->find($id);
-                break;
-            default:
-                throw $this->createNotFoundException('Объект недвижимости не определен.');
-                break;
-        }
-        
+        $entity = $em->getRepository('SpbRealityBundle:' . ucwords($rtype))->find($id);
+                
         if (!$entity) {
             throw $this->createNotFoundException('Объект недвижимости не найден.');
         }
 
-        switch ($rtype) {
-            case "flat":
-                $editForm = $this->createForm(new FlatType(), $entity);
-                break;
-            case "room":
-                $editForm = $this->createForm(new RoomType(), $entity);
-                break;
-            default:
-                throw $this->createNotFoundException('Объект недвижимости не определен.');
-                break;
-        }
-
+        $formType = 'Spb\\RealityBundle\\Form\\' . ucwords($rtype) . 'Type';       
+        $editForm   = $this->createForm(new $formType, $entity);
+        
         $deleteForm = $this->createDeleteForm($id);
         $request = $this->getRequest();
         $editForm->bindRequest($request);
@@ -260,20 +185,11 @@ class RealtyController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
+        
             $em = $this->getDoctrine()->getEntityManager();
 
-            switch ($rtype) {
-                case "flat":
-                    $entity = $em->getRepository('SpbRealityBundle:Flat')->find($id);
-                    break;
-                case "room":
-                    $entity = $em->getRepository('SpbRealityBundle:Room')->find($id);
-                    break;
-                default:
-                    throw $this->createNotFoundException('Объект недвижимости не определен.');
-                    break;
-            }
-
+            $entity = $em->getRepository('SpbRealityBundle:' . ucwords($rtype))->find($id);
+            
             if (!$entity) {
                 throw $this->createNotFoundException('Объект недвижимости не найден.');
             }

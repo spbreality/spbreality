@@ -42,26 +42,6 @@ class Land extends Realty
     }    
 
     /**
-     * Set sm100
-     *
-     * @param int $sm100
-     */
-    public function setSm100(\int $sm100)
-    {
-        $this->sm100 = $sm100;
-    }
-
-    /**
-     * Get sm100
-     *
-     * @return int 
-     */
-    public function getSm100()
-    {
-        return $this->sm100;
-    }
-
-    /**
      * Set property_type
      *
      * @param Spb\RealityBundle\Entity\PropertyType $propertyType
@@ -79,5 +59,25 @@ class Land extends Realty
     public function getPropertyType()
     {
         return $this->property_type;
+    }
+
+    /**
+     * Set sm100
+     *
+     * @param integer $sm100
+     */
+    public function setSm100($sm100)
+    {
+        $this->sm100 = $sm100;
+    }
+
+    /**
+     * Get sm100
+     *
+     * @return integer 
+     */
+    public function getSm100()
+    {
+        return $this->sm100;
     }
 }

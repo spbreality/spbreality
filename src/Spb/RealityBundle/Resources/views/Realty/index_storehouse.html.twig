@@ -1,6 +1,6 @@
 {% extends 'SpbRealityBundle:Realty:index.html.twig' %}
 
-{% block rtype_ru_pl_camel %}Комнаты{% endblock %}
+{% block rtype_ru_pl_camel %}Производственно-складские помещения{% endblock %}
 
 {% block rtypeblock %}
 
@@ -8,16 +8,13 @@
     <thead>
         <tr>
             <th>№</th>
-            <th colspan="2">Тип</th>
+            <th>Тип</th>
             <th>Район</th>
             <th>Адрес</th>
-            <th><abbr title="Количество комнат">К</abbr></th>
-            <th>Этаж</th>
-            <th>Дом</th>
-            <th>жил.</th>
-            <th>кух.</th>
-            <th><abbr title="Санузел">С/У</abbr></th>
-            <th><abbr title="Комнат/Соседей/Съемщиков">КСС</abbr></th>            
+            <th>Площадь</th>
+            <th>Подъезд</th>
+            <th><abbr title="Высота потолков(м)">Выс. пот.</abbr></th>
+            <th><abbr title="Состояние помещения">Сост.</abbr></th>            
             <th>Цена</th>
             <th>Доп.сведения</th>
             <th>Действия</th>
@@ -28,16 +25,12 @@
         <tr>
             <td><a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" title="Номер объекта">{{ entity.id }}</a></td>            
             <td><abbr title="{{ entity.operation }}"  class="initialism">{{ entity.operation.abbr }}</abbr></td>
-            <td><abbr title="{{ entity.buildingstage.name }}"  class="initialism">{{ entity.buildingstage.abbr }}</abbr></td>            
             <td>{{ entity.district }}</td>
             <td>{{ entity.address }}</td>          
-            <td>{{ entity.rooms }}</td>
-            <td>{{ entity.floor }}/{{ entity.floors }}</td>
-            <td><abbr title="{{ entity.buildingtype.name }}" class="initialism">{{ entity.buildingtype.abbr }}</abbr></td>           
-            <td>{{ entity.sl }}</td>
-            <td>{{ entity.sk }}</td>
-            <td><abbr title="{{ entity.bathunittype.name }}"  class="initialism">{{ entity.bathunittype.abbr }}</abbr></td>
-            <td>{{ entity.nr }}/{{ entity.nt }}/{{ entity.nn }}</td>
+            <td>{{ entity.s }}</td>
+            <td>{{ entity.approachtype.abbr }}</abbr></td>
+            <td>{{ entity.height }}</td>
+            <td>{{ entity.statetype.abbr }}</td>
             <td>{{ entity.price }}</td>            
             <td>{{ entity.sdesc }}</td>
             <td>
@@ -50,6 +43,6 @@
 </table>
 
 
-<a href="{{ path('admin_realty_new', { 'rtype': "room" }) }}" > Добавить комнату</a>
+<a href="{{ path('admin_realty_new', { 'rtype': "storehouse" }) }}" > Добавить склад</a>
 
 {% endblock %}

@@ -12,10 +12,6 @@
                     <td>{{ entity.operation }}</td>
                 </tr>
                 <tr>
-                    <th>Тип дома</th>
-                    <td>{{ entity.buildingstage }}</td>
-                </tr>
-                <tr>
                     <th>Район</th>
                     <td>{{ entity.district }}</td>
                 </tr>
@@ -23,35 +19,26 @@
                     <th>Адрес</th>
                     <td>{{ entity.address }}</td>
                 </tr>
-                
                 <tr>
-                    <th>Количество комнат</th>
-                    <td>{{ entity.rooms }}</td>
+                    <th><abbr tittle="Размер участка в сотках">Размер участка</abbr></th>
+                    <td>{{ entity.sm100 }}</td>
+                </tr>
+                <tr>
+                    <th><abbr tittle="Тип собственности">ИЖС/САД</abbr></th>
+                    <td>{{ entity.propertytype }}</td>
+                </tr>                                
+                <tr>
+                    <th>Площадь дома</th>
+                    <td>{{ entity.area }}</td>
                 </tr>
                 <tr>
                     <th>Этажность</th>
-                    <td>{{ entity.floor }}/{{ entity.floors }}</td>
+                    <td>{{ entity.floors }}</td>
                 </tr>
                 <tr>
-                    <th>Тип/материал дома</th>
-                    <td>{{ entity.buildingtype }}</td>
+                    <th>Тип дома</th>
+                    <td>{{ entity.housetype }}</td>
                 </tr>
-                <tr>
-                    <th>Жилая площадь</th>
-                    <td>{{ entity.sl }}</td>
-                </tr>
-                <tr>
-                    <th>Площадь кухни</th>
-                    <td>{{ entity.sk }}</td>
-                </tr>
-                <tr>
-                    <th>Санузел</th>
-                    <td>{{ entity.bathunittype }}</td>
-                </tr>                
-                <tr>
-                    <th><abbr title="Комнат/Съемщиков/Соседей">КСС</abbr></th>
-                    <td>{{ entity.nr }}/{{ entity.nt }}/{{ entity.nn }}</td>
-                </tr>                
                 <tr>
                     <th>Цена</th>
                     <td>{{ entity.price }}</td>
