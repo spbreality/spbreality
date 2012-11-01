@@ -1,6 +1,7 @@
 {% extends 'SpbRealityBundle:Realty:index.html.twig' %}
 
 {% block rtype_ru_pl_camel %}Дома{% endblock %}
+{% block add_link %}<a href="{{ path('admin_realty_new', { 'rtype': "house" }) }}" > Добавить дом</a>{% endblock %}
 
 {% block rtypeblock %}
 
@@ -44,8 +45,4 @@
     </tbody>
 </table>
 
-
-<a href="{{ path('admin_realty_new', { 'rtype': "house" }) }}" > Добавить дом</a>
-
 {% endblock %}
-{# empty Twig template #}

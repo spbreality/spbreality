@@ -1,6 +1,7 @@
 {% extends 'SpbRealityBundle:Realty:index.html.twig' %}
 
 {% block rtype_ru_pl_camel %}Производственно-складские помещения{% endblock %}
+{% block add_link %}<a href="{{ path('admin_realty_new', { 'rtype': "storehouse" }) }}" > Добавить склад</a>{% endblock %}
 
 {% block rtypeblock %}
 
@@ -41,8 +42,5 @@
     {% endfor %}
     </tbody>
 </table>
-
-
-<a href="{{ path('admin_realty_new', { 'rtype': "storehouse" }) }}" > Добавить склад</a>
 
 {% endblock %}

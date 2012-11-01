@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="c07_object", type="string", length=32)
- * @ORM\DiscriminatorMap({"комната"="Room", "квартира"="Flat", "участок"="Land", "дом"="House", "офис"="Office", "склад"="Storehouse"})
+ * @ORM\DiscriminatorMap({"комната"="Room", "квартира"="Flat", "участок"="Land", "дом"="House", "офис"="Office", "склад"="Storehouse", "ОСЗ"="Building"})
  */
 
 abstract class Realty
@@ -279,8 +279,8 @@ abstract class Realty
                 $names = "склады";
                 break;
             case "building":
-                $name = "здание";
-                $names = "здания";
+                $name = "отдельно стоящее здание";
+                $names = "отдельно стоящие здания";
                 break;
             default:
                 break;

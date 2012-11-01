@@ -1,7 +1,7 @@
 {% extends 'SpbRealityBundle:Realty:index.html.twig' %}
 
-{% block rtype_ru_pl_camel %}Участки{% endblock %}
-{% block add_link %}<a href="{{ path('admin_realty_new', { 'rtype': "land" }) }}" > Добавить участок</a>{% endblock %}
+{% block rtype_ru_pl_camel %}Отдельно стоящие здания{% endblock %}
+{% block add_link %}<a href="{{ path('admin_realty_new', { 'rtype': "building" }) }}" > Добавить ОСЗ</a>{% endblock %}
 
 {% block rtypeblock %}
 
@@ -12,8 +12,10 @@
             <th>Тип</th>
             <th>Район</th>
             <th>Адрес</th>
-            <th><abbr title="Размер участка в сотках">Уч. сот</abbr></th>
-            <th><abbr title="Тип собственности">ИЖС/САД</abbr></th>
+            <th>Площ.</th>
+            <th><abbr title="Всего этажей">Эт.</abbr></th>
+            <th><abbr title="Состояние помещения">Сост.</abbr></th>
+            <th>Пл.уч. га</th>
             <th>Цена</th>
             <th>Доп.сведения</th>
             <th>Действия</th>
@@ -26,8 +28,10 @@
             <td><abbr title="{{ entity.operation }}"  class="initialism">{{ entity.operation.abbr }}</abbr></td>
             <td>{{ entity.district }}</td>
             <td>{{ entity.address }}</td>          
-            <td>{{ entity.sm100 }}</td>          
-            <td><abbr title="{{ entity.propertytype.name }}" class="initialism">{{ entity.propertytype.abbr }}</abbr></td>          
+            <td>{{ entity.s }}</td>
+            <td>{{ entity.floors }}</abbr></td>
+            <td>{{ entity.statetype.abbr }}</td>
+            <td>{{ entity.area }}</td>
             <td>{{ entity.price }}</td>            
             <td>{{ entity.sdesc }}</td>
             <td>

@@ -8,12 +8,21 @@
             Жилая недвижимость<span class="divider">/</span>
         </li>
         <li class="active">
-            {% block rtype_ru_pl_camel %}Объекты{% endblock %}
+            <u>{% block rtype_ru_pl_camel %}Объекты{% endblock %}</u><span class="divider">/</span>
         </li>
+        <li>
+            {% block add_link %}#{% endblock %}
+        </li>
+
     </ul>
 {% block rtypeblock %}              
 
 {% endblock %}
+
+{# display navigation #}
+<div class="navigation">
+    {{ entities.render()|raw }}
+</div>
         
 </div>
 {% endblock %}
