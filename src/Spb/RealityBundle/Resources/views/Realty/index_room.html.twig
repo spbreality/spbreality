@@ -8,18 +8,18 @@
 <table class="table table-striped table-bordered table-condensed">
     <thead>
         <tr>
-            <th>№</th>
-            <th colspan="2">Тип</th>
+            <th>{{ entities.sortable('№', 'r.id')|raw }} {% if entities.isSorted('r.id') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>Тип</th>
             <th>Район</th>
-            <th>Адрес</th>
+            <th>{{ entities.sortable('Адрес', 'r.address')|raw }} {% if entities.isSorted('r.address') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th><abbr title="Количество комнат">К</abbr></th>
             <th>Этаж</th>
             <th>Дом</th>
-            <th>жил.</th>
-            <th>кух.</th>
+            <th>{{ entities.sortable('жил.', 'r.sl')|raw }} {% if entities.isSorted('r.sl') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>{{ entities.sortable('кух.', 'r.sk')|raw }} {% if entities.isSorted('r.sk') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th><abbr title="Санузел">С/У</abbr></th>
             <th><abbr title="Комнат/Соседей/Съемщиков">КСС</abbr></th>            
-            <th>Цена</th>
+            <th>{{ entities.sortable('Цена', 'r.price')|raw }} {% if entities.isSorted('r.price') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th>Доп.сведения</th>
             <th>Действия</th>
         </tr>
@@ -29,7 +29,6 @@
         <tr>
             <td><a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" title="Номер объекта">{{ entity.id }}</a></td>            
             <td><abbr title="{{ entity.operation }}"  class="initialism">{{ entity.operation.abbr }}</abbr></td>
-            <td><abbr title="{{ entity.buildingstage.name }}"  class="initialism">{{ entity.buildingstage.abbr }}</abbr></td>            
             <td>{{ entity.district }}</td>
             <td>{{ entity.address }}</td>          
             <td>{{ entity.rooms }}</td>

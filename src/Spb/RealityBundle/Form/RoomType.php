@@ -13,7 +13,6 @@ class RoomType extends AbstractType
             ->add('operation', null, array('label' => 'Тип операции',))                
             ->add('district', null, array('label' => 'Район'))
             ->add('address', null, array('label' => 'Адрес'))
-            ->add('building_stage', null, array('label' => 'Статус',))
             ->add('building_type', null, array('label' => 'Материал дома',))
             ->add('floor', null, array('label' => 'Этаж'))
             ->add('floors', null, array('label' => 'Этажность'))

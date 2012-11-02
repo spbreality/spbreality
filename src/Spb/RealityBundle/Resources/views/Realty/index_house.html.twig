@@ -8,16 +8,16 @@
 <table class="table table-striped table-bordered table-condensed">
     <thead>
         <tr>
-            <th>№</th>
+            <th>{{ entities.sortable('№', 'r.id')|raw }} {% if entities.isSorted('r.id') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th>Тип</th>
             <th>Район</th>
-            <th>Адрес</th>
-            <th><abbr title="Размер участка в сотках">Уч. сот</abbr></th>
+            <th>{{ entities.sortable('Адрес', 'r.address')|raw }} {% if entities.isSorted('r.address') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>{{ entities.sortable('Уч. сот', 'r.sm100')|raw }} {% if entities.isSorted('r.sm100') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th><abbr title="Тип собственности">ИЖС/САД</abbr></th>
-            <th>Площ. дома</th>
+            <th>{{ entities.sortable('Площ. дома', 'r.area')|raw }} {% if entities.isSorted('r.area') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th><abbr title="Этажей в доме">Эт.</abbr></th>
             <th><abbr title="Тип дома">Дом</abbr></th>
-            <th>Цена</th>
+            <th>{{ entities.sortable('Цена', 'r.price')|raw }} {% if entities.isSorted('r.price') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th>Доп.сведения</th>
             <th>Действия</th>
         </tr>

@@ -23,6 +23,14 @@ class Flat extends Apartment
     private $s;
 
     /**
+     * статус апартаментов: первичка/вторичка
+     * 
+     * @ORM\ManyToOne(targetEntity="BuildingStage")
+     * @ORM\JoinColumn(name="c04_building_stage_id", referencedColumnName="c05_id")
+     */
+    private $building_stage;
+    
+    /**
      * Set s
      *
      * @param decimal $s
@@ -52,4 +60,24 @@ class Flat extends Apartment
         return "flat";
     }
 
+
+    /**
+     * Set building_stage
+     *
+     * @param Spb\RealityBundle\Entity\BuildingStage $buildingStage
+     */
+    public function setBuildingStage(\Spb\RealityBundle\Entity\BuildingStage $buildingStage)
+    {
+        $this->building_stage = $buildingStage;
+    }
+
+    /**
+     * Get building_stage
+     *
+     * @return Spb\RealityBundle\Entity\BuildingStage 
+     */
+    public function getBuildingStage()
+    {
+        return $this->building_stage;
+    }
 }

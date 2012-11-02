@@ -58,15 +58,7 @@ abstract class Apartment extends Realty
      * @ORM\Column(name="c10_sk", type="decimal", scale=2)
      */
     private $sk;
-
-    /**
-     * статус апартаментов: первичка/вторичка
-     * 
-     * @ORM\ManyToOne(targetEntity="BuildingStage")
-     * @ORM\JoinColumn(name="c10_building_stage_id", referencedColumnName="c05_id")
-     */
-    private $building_stage;
-    
+  
     /**
      * тип дома
      * 
@@ -194,26 +186,6 @@ abstract class Apartment extends Realty
     }
 
     /**
-     * Get building_stage
-     *
-     * @return Spb\RealityBundle\Entity\BuildingStage 
-     */
-    public function getBuildingStage()
-    {
-        return $this->building_stage;
-    }
-
-    /**
-     * Set building_type
-     *
-     * @param Spb\RealityBundle\Entity\BuildingType $buildingType
-     */
-    public function setBuildingType(\Spb\RealityBundle\Entity\BuildingType $buildingType)
-    {
-        $this->building_type = $buildingType;
-    }
-
-    /**
      * Get building_type
      *
      * @return Spb\RealityBundle\Entity\BuildingType 
@@ -241,5 +213,15 @@ abstract class Apartment extends Realty
     public function getBathunitType()
     {
         return $this->bathunit_type;
+    }
+
+    /**
+     * Set building_type
+     *
+     * @param Spb\RealityBundle\Entity\BuildingType $buildingType
+     */
+    public function setBuildingType(\Spb\RealityBundle\Entity\BuildingType $buildingType)
+    {
+        $this->building_type = $buildingType;
     }
 }

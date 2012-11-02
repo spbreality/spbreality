@@ -23,8 +23,6 @@ class RealtyController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('SpbRealityBundle:' . ucwords($rtype))->findAll();
-
         $repository = $em->getRepository('SpbRealityBundle:' . ucwords($rtype));
         $query = $repository->createQueryBuilder('r')
                 ->getQuery();
@@ -32,16 +30,11 @@ class RealtyController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
-            $this->get('request')->query->get('page', 1),  /*page number*/
-            1  /*limit per page*/
+            $this->get('request')->query->get('page', 1), /*номер страницы*/
+            $this->container->getParameter('rows_per_page') /*количество записей на странице*/
         );
 
-        // parameters to template
-//        return compact('pagination');
-
-
         return $this->render('SpbRealityBundle:Realty:index_' . $rtype . '.html.twig', array('entities' => $pagination));
-
     }
     
     /**
