@@ -23,7 +23,7 @@ class Flat extends Apartment
     private $s;
 
     /**
-     * статус апартаментов: первичка/вторичка
+     * статус квартиры: первичка/вторичка
      * 
      * @ORM\ManyToOne(targetEntity="BuildingStage")
      * @ORM\JoinColumn(name="c04_building_stage_id", referencedColumnName="c05_id")

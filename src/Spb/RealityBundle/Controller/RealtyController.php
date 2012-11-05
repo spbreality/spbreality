@@ -21,6 +21,15 @@ class RealtyController extends Controller
      */
     public function indexAction($rtype)
     {
+        $realtySearch = 'Spb\\RealityBundle\\Entity\\Search\\' . ucwords($rtype) . 'Search';
+        $realtySearchType = 'Spb\\RealityBundle\\Form\\Search\\' . ucwords($rtype) . 'SearchType';
+        
+        //Создаем доменный объект, в котором хранятся параметры поиска
+        $rSearch = new $realtySearch();
+        //Создаем форму поиска
+        $searchForm = $this->createForm(new $realtySearchType(), $rSearch);
+        $searchForm->bindRequest($this->getRequest());
+                
         $em = $this->getDoctrine()->getEntityManager();
 
         $repository = $em->getRepository('SpbRealityBundle:' . ucwords($rtype));
@@ -34,7 +43,7 @@ class RealtyController extends Controller
             $this->container->getParameter('rows_per_page') /*количество записей на странице*/
         );
 
-        return $this->render('SpbRealityBundle:Realty:index_' . $rtype . '.html.twig', array('entities' => $pagination));
+        return $this->render('SpbRealityBundle:Realty:index_' . $rtype . '.html.twig', array('entities' => $pagination, 'search_form' => $searchForm->createView()));
     }
     
     /**

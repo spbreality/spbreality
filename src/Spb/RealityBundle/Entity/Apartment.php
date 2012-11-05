@@ -44,9 +44,9 @@ abstract class Apartment extends Realty
     /**
      * жилая площадь
      * 
-     * @var string $sl
+     * @var decimal $sl
      *
-     * @ORM\Column(name="c10_sl", type="string", length=32)
+     * @ORM\Column(name="c10_sl", type="decimal", scale=2)
      */
     private $sl;
 
