@@ -13,8 +13,11 @@
         <li>
             {% block add_link %}#{% endblock %}
         </li>
-
+        <li class="pull-right">
+            <a href="#" onClick='$("#searchForm").toggle("slow");' class="pull-right"> Поиск </a>
+        </li>
     </ul>
+                
 
 {% block search %}{% endblock %}        
 

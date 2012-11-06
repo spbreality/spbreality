@@ -4,29 +4,34 @@
 {% block add_link %}<a href="{{ path('admin_realty_new', { 'rtype': "flat" }) }}"> Добавить квартиру</a>{% endblock %}
 
 {% block search%}
-<form class="form-horizontal">
- <div class="control-group">
-<label class="control-label" for="inputEmail">Email</label>
-<div class="controls">
-<input type="text" id="inputEmail" placeholder="Email">
-</div>
-</div>
-<div class="control-group">
-<label class="control-label" for="inputPassword">Password</label>
-<div class="controls">
-<input type="password" id="inputPassword" placeholder="Password">
-</div>
-</div>
-<div class="control-group">
-<div class="controls">
-<label class="checkbox">
-<input type="checkbox"> Remember me
-</label>
-<button type="submit" class="btn">Sign in</button>
-</div>
-</div>
+<form id='searchForm' class="form-horizontal" action="{{ path('admin_realty', { 'rtype': "flat" }) }}" method="get">
+    <div class="row">
+    <div class="span4">
+        <div class="pull-right">
+        <strong>Комнат</strong>
+        от{{ form_widget(search_form.minRooms, { 'attr': {'class': 'input-mini'} }) }}
+        до{{ form_widget(search_form.maxRooms, { 'attr': {'class': 'input-mini'} }) }}
+        </div>
+            <div class="pull-right">
+        <strong>Цена</strong>
+        от{{ form_widget(search_form.minPrice, { 'attr': {'class': 'input-mini'} }) }}
+        до{{ form_widget(search_form.maxPrice, { 'attr': {'class': 'input-mini'} }) }}
+        </div>
+        
+    </div>
+    <div class="span4">
+        dagdsag dggas sagdagsd dagsg dagdsag dggas sagdagsd dagsg dagdsag dggas sagdagsd dagsg dagdsag dggas sagdagsd dagsg
+    </div>
+    <div class="span4">
+        <button type="reset" class="btn">Очистить</button>
+        <button type="submit" class="btn">Поиск</button>
+    </div>
+    
+    </div>    
+    
 </form>
 {% endblock%}
+
 
 {% block rtypeblock %}
 <table class="table table-striped table-bordered table-condensed">
@@ -42,10 +47,10 @@
             <th>{{ entities.sortable('общ.', 'r.s')|raw }} {% if entities.isSorted('r.s') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th>{{ entities.sortable('жил.', 'r.sl')|raw }} {% if entities.isSorted('r.sl') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th>{{ entities.sortable('кух.', 'r.sk')|raw }} {% if entities.isSorted('r.sk') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
-            <th><abbr title="Санузел">С/У</abbr></th>
+            <th><abbr title="Санузел">С</abbr></th>
             <th>{{ entities.sortable('Цена', 'r.price')|raw }} {% if entities.isSorted('r.price') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
-            <th>Доп.сведения</th>
-            <th>Действия</th>
+            <th>Доп.</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -66,7 +71,7 @@
             <td>{{ entity.price }}</td>            
             <td>{{ entity.sdesc }}</td>
             <td>
-                <a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" class="icon-check" title="Показать"></a> | 
+                <a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" class="icon-check" title="Показать"></a>
                 <a href="{{ path('admin_realty_edit', { 'rtype': entity.realtytype, 'id': entity.id }) }}" class="icon-edit" title="Редактировать"></a>
             </td>
         </tr>
@@ -75,3 +80,4 @@
 </table>
 
 {% endblock %}
+        

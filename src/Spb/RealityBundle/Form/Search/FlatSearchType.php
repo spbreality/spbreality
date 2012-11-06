@@ -10,7 +10,9 @@ class FlatSearchType extends AbstractType {
    public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('minRooms', null, array('required' => false, 'label' => 'от '))
-                ->add('maxRooms', null, array('required' => false, 'label' => 'до '));
+                ->add('maxRooms', null, array('required' => false, 'label' => 'до '))
+                ->add('minPrice', null, array('required' => false, 'label' => 'от '))
+                ->add('maxPrice', null, array('required' => false, 'label' => 'до '));
     }
     
     public function getDefaultOptions(array $options)
