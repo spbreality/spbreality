@@ -15,7 +15,7 @@ class RealtySearch
      * @var decimal $minPrice
      *
      */
-    public $minPrice;
+    public $min_price;
     
     /**
      * макс. цена на объект недвижимости
@@ -23,7 +23,7 @@ class RealtySearch
      * @var decimal $maxPrice
      *
      */
-    public $maxPrice;
+    public $max_price;
    
     /**
      * адрес объекта недвижимости
@@ -40,5 +40,13 @@ class RealtySearch
      * 
      */
     public $district;
+    
+    /**
+     * тип операции по объекту недвижимости (продажа/аренда)
+     * 
+     * @var integer
+     * 
+     */
+    public $operation;    
 
 }

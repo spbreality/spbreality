@@ -13,7 +13,7 @@ class ApartmentSearch extends RealtySearch
      * @var smallint $minRooms
      *
      */
-    public $minRooms;
+    public $min_rooms;
 
     /**
      * макс. количество комнат в апартаментах
@@ -21,7 +21,7 @@ class ApartmentSearch extends RealtySearch
      * @var smallint $maxRooms
      *
      */
-    public $maxRooms;
+    public $max_rooms;
 
     /**
      * 1ый этаж
@@ -29,7 +29,7 @@ class ApartmentSearch extends RealtySearch
      * @var smallint $firstFloor
      *
      */
-    public $firstFloor;
+    public $first_floor;
 
     /**
      * последний этаж
@@ -37,7 +37,7 @@ class ApartmentSearch extends RealtySearch
      * @var smallint $lastFloor
      *
      */
-    public $lastFloor;
+    public $last_floor;
 
     /**
      * мин. площадь кухни
@@ -45,7 +45,7 @@ class ApartmentSearch extends RealtySearch
      * @var decimal $sk
      *
      */
-    public $minSk;
+    public $min_sk;
 
     /**
      * макс. площадь кухни
@@ -53,7 +53,7 @@ class ApartmentSearch extends RealtySearch
      * @var decimal $sk
      *
      */
-    public $maxSk;
+    public $max_sk;
     
     /**
      * тип дома

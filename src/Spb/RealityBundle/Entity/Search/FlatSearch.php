@@ -17,7 +17,7 @@ class FlatSearch extends ApartmentSearch
      * @var decimal $minS
      *
      */
-    public $minS;
+    public $min_s;
 
     /**
      * макс. общая площадь
@@ -25,7 +25,7 @@ class FlatSearch extends ApartmentSearch
      * @var decimal $maxS
      *
      */
-    public $maxS;
+    public $max_s;
 
     /**
      * статус апартаментов: первичка/вторичка
