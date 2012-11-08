@@ -3,6 +3,7 @@
 namespace Spb\RealityBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Spb\RealityBundle\Entity\Search\FlatSearch;
 
 /**
  * FlatRepository
@@ -12,4 +13,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class FlatRepository extends EntityRepository
 {
+    public function buildSearchQuery(FlatSearch $fs)
+    {
+        $qb = $this->createQueryBuilder('r');
+               
+        //Мин. цена на объект недвижимости
+        if ($fs->min_price) $qb->andWhere($qb->expr()->gte('r.price', $fs->min_price));
+        
+        return $qb->getQuery();
+    }
 }

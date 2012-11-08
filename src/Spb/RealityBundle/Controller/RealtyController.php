@@ -21,20 +21,20 @@ class RealtyController extends Controller
      */
     public function indexAction($rtype)
     {
-        $realtySearch = 'Spb\\RealityBundle\\Entity\\Search\\' . ucwords($rtype) . 'Search';
-        $realtySearchType = 'Spb\\RealityBundle\\Form\\Search\\' . ucwords($rtype) . 'SearchType';
+        $realty_search = 'Spb\\RealityBundle\\Entity\\Search\\' . ucwords($rtype) . 'Search';
+        $realty_search_type = 'Spb\\RealityBundle\\Form\\Search\\' . ucwords($rtype) . 'SearchType';
         
         //Создаем доменный объект, в котором хранятся параметры поиска
-        $rSearch = new $realtySearch();
+        $rsearch = new $realty_search();
         //Создаем форму поиска
-        $searchForm = $this->createForm(new $realtySearchType(), $rSearch);
-        $searchForm->bindRequest($this->getRequest());
+        $search_form = $this->createForm(new $realty_search_type(), $rsearch);
+        $search_form->bindRequest($this->getRequest());
                 
         $em = $this->getDoctrine()->getEntityManager();
 
         $repository = $em->getRepository('SpbRealityBundle:' . ucwords($rtype));
-        $query = $repository->createQueryBuilder('r')
-                ->getQuery();
+
+        $query = $repository->buildSearchQuery($rsearch);
         
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -43,7 +43,7 @@ class RealtyController extends Controller
             $this->container->getParameter('rows_per_page') /*количество записей на странице*/
         );
 
-        return $this->render('SpbRealityBundle:Realty:index_' . $rtype . '.html.twig', array('entities' => $pagination, 'search_form' => $searchForm->createView()));
+        return $this->render('SpbRealityBundle:Realty:index_' . $rtype . '.html.twig', array('entities' => $pagination, 'search_form' => $search_form->createView()));
     }
     
     /**

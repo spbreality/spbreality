@@ -9,78 +9,78 @@
         <table class=table>
             <tr>
                 <td>
-        <div class="control-group">
-            {{ form_widget(search_form.operation) }}
-        </div>                   
-        <div class="control-group">            
-            <div class="input-prepend">
-                <span class="add-on">от</span>
-                {{ form_widget(search_form.min_s, { 'attr': {'class': 'input-mini', 'id': 'prependedInput'} }) }}
-            </div>
-            <div class="input-prepend input-append">
-                <span class="add-on">до</span>
-                {{ form_widget(search_form.max_s, { 'attr': {'class': 'input-mini', 'id': 'appendedPrependedInput'} }) }}
-                <span class="add-on">S общая (м<sup>2</sup>)</span>
-            </div>
-        </div>
-        <div class="control-group">            
-            <div class="input-prepend">
-                <span class="add-on">от</span>
-                {{ form_widget(search_form.min_sk, { 'attr': {'class': 'input-mini', 'id': 'prependedInput'} }) }}
-            </div>
-            <div class="input-prepend input-append">
-                <span class="add-on">до</span>
-                {{ form_widget(search_form.max_sk, { 'attr': {'class': 'input-mini', 'id': 'appendedPrependedInput'} }) }}
-                <span class="add-on">S кухни (м<sup>2</sup>)</span>
-            </div>
-        </div>
-        <div class="control-group">
-            {{ form_widget(search_form.district) }}
-        </div>                              
-                    </td>
-                    <td>
-        <div class="control-group">           
-            {{ form_widget(search_form.building_stage) }}
-        </div>       
-        <div class="control-group">
-            <div class="input-prepend">
-                <span class="add-on">от</span>
-                {{ form_widget(search_form.min_rooms, { 'attr': {'class': 'input-mini', 'id': 'prependedInput'} }) }}
-            </div>
-            <div class="input-prepend input-append">
-                <span class="add-on">до</span>
-                {{ form_widget(search_form.max_rooms, { 'attr': {'class': 'input-mini', 'id': 'appendedPrependedInput'} }) }}
-                <span class="add-on">комнат</span>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="input-prepend">
-                <span class="add-on">от</span>
-                {{ form_widget(search_form.min_price, { 'attr': {'class': 'input-mini', 'id': 'prependedInput'} }) }}
-            </div>
-            <div class="input-prepend input-append">
-                <span class="add-on">до</span>
-                {{ form_widget(search_form.max_price, { 'attr': {'class': 'input-mini', 'id': 'appendedPrependedInput'} }) }}
-                <span class="add-on">цена (тыс. руб.)</span>
-            </div>
-        </div>
-        <div class="control-group">
-            {{ form_widget(search_form.building_type) }}
+                    <div class="control-group">
+                        {{ form_widget(search_form.operation) }}
+                    </div>                   
+                    <div class="control-group">            
+                        <div class="input-prepend">
+                            <span class="add-on">от</span>
+                            {{ form_widget(search_form.min_s, { 'attr': {'class': 'input-mini', 'id': 'prependedInput'} }) }}
+                        </div>
+                        <div class="input-prepend input-append">
+                            <span class="add-on">до</span>
+                            {{ form_widget(search_form.max_s, { 'attr': {'class': 'input-mini', 'id': 'appendedPrependedInput'} }) }}
+                            <span class="add-on">S общая (м<sup>2</sup>)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">            
+                        <div class="input-prepend">
+                            <span class="add-on">от</span>
+                            {{ form_widget(search_form.min_sk, { 'attr': {'class': 'input-mini', 'id': 'prependedInput'} }) }}
+                        </div>
+                        <div class="input-prepend input-append">
+                            <span class="add-on">до</span>
+                            {{ form_widget(search_form.max_sk, { 'attr': {'class': 'input-mini', 'id': 'appendedPrependedInput'} }) }}
+                            <span class="add-on">S кухни (м<sup>2</sup>)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_widget(search_form.district) }}
+                    </div>                              
+                </td>
+                <td>
+                    <div class="control-group">           
+                        {{ form_widget(search_form.building_stage) }}
+                    </div>       
+                    <div class="control-group">
+                        <div class="input-prepend">
+                            <span class="add-on">от</span>
+                            {{ form_widget(search_form.min_rooms, { 'attr': {'class': 'input-mini', 'id': 'prependedInput'} }) }}
+                        </div>
+                        <div class="input-prepend input-append">
+                            <span class="add-on">до</span>
+                            {{ form_widget(search_form.max_rooms, { 'attr': {'class': 'input-mini', 'id': 'appendedPrependedInput'} }) }}
+                            <span class="add-on">комнат</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="input-prepend">
+                            <span class="add-on">от</span>
+                            {{ form_widget(search_form.min_price, { 'attr': {'class': 'input-mini', 'id': 'prependedInput'} }) }}
+                        </div>
+                        <div class="input-prepend input-append">
+                            <span class="add-on">до</span>
+                            {{ form_widget(search_form.max_price, { 'attr': {'class': 'input-mini', 'id': 'appendedPrependedInput'} }) }}
+                            <span class="add-on">цена (тыс. руб.)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_widget(search_form.building_type) }}
         </div> 
-                     </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-        <div class="control-group">            
-            <div class="input-append input-prepend">
-                <span class="add-on">Поиск по адресу</span>
-                {{ form_widget(search_form.address, { 'attr': {'id': 'prependedInput appendedInputButtons'} }) }}
-                <button type="reset" class="btn">Очистить</button>
-                <button type="submit" class="btn btn-primary">Поиск</button>
-            </div>
-        </div>
-                        </td>
-                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="control-group">            
+                        <div class="input-append input-prepend">
+                            <span class="add-on">Поиск по адресу</span>
+                            {{ form_widget(search_form.address, { 'attr': {'id': 'prependedInput appendedInputButtons'} }) }}
+                            <button type="reset" class="btn">Очистить</button>
+                            <button type="submit" class="btn btn-primary">Поиск</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
         </table>
     </fieldset>
 </form>

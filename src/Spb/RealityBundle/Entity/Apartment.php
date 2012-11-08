@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="t10_apartment")
  * @ORM\Entity
  */
-abstract class Apartment extends Realty
+class Apartment extends Realty
 {
     /**
      * количество комнат в апартаментах
