@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Spb\RealityBundle\Entity\Flat
  *
  * @ORM\Table(name="t04_flat")
- * @ORM\Entity(repositoryClass="Spb\RealityBundle\Entity\FlatRepository")
+ * @ORM\Entity
  */
 class Flat extends Apartment
 {

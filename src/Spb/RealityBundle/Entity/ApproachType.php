@@ -27,7 +27,7 @@ class ApproachType
      * @var string $abbr
      *
      * @ORM\Column(name="c21_abbr", type="string", length=8)
-     * @Assert:NotBlank(message = "Необходимо сокращение")
+     * @Assert\NotBlank(message = "Необходимо сокращение")
      */
     private $abbr;
 
@@ -35,7 +35,7 @@ class ApproachType
      * @var string $name
      *
      * @ORM\Column(name="c21_name", type="string", length=128)
-     * @Assert:NotBlank(message = "Необходимо название")
+     * @Assert\NotBlank(message = "Необходимо название")
      */
     private $name;
 

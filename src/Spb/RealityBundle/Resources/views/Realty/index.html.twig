@@ -7,13 +7,11 @@
         <li>
             Жилая недвижимость<span class="divider">/</span>
         </li>
-        <li class="active">
-            <u>{% block rtype_ru_pl_camel %}Объекты{% endblock %}</u><span class="divider">/</span>
-        </li>
         <li>
-            {% block add_link %}#{% endblock %}
+            {% block rtype_ru_pl_camel %}Объекты{% endblock %}
         </li>
         <li class="pull-right">
+            {% block add_link %}#{% endblock %}<span class="divider">|</span>
             <a href="#" onClick='$("#searchForm").toggle("slow");' class="pull-right"> Поиск </a>
         </li>
     </ul>
