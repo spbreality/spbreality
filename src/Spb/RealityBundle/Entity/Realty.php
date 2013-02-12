@@ -86,6 +86,11 @@ abstract class Realty
      */
     private $latitude;
 
+     /**
+     * @var string $yandex_map_key
+     */
+    private $yandex_map_key;
+    
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -97,7 +102,7 @@ abstract class Realty
             $this->latitude  = 0;
         }
         
-        $url = 'http://geocode-maps.yandex.ru/1.x/?geocode='.urlencode($this->district.', '.$this->address);
+        $url = 'http://geocode-maps.yandex.ru/1.x/?geocode='.urlencode($this->district.', '.$this->address).'&key='.$this->yandex_map_key;
  
         $results = file($url);
         
@@ -248,9 +253,10 @@ abstract class Realty
         return '' . $this->getId();
     }       
     
-    public function __construct()
+    public function __construct($ymk)
     {
         $this->documents = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->yandex_map_key = $ymk;
     }
     
     /**

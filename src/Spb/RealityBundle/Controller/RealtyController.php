@@ -81,7 +81,7 @@ class RealtyController extends Controller
         $realty = 'Spb\\RealityBundle\\Entity\\' . ucwords($rtype);
         $formType = 'Spb\\RealityBundle\\Form\\' . ucwords($rtype) . 'Type';
         
-        $entity = new $realty();
+        $entity = new $realty($this->container->getParameter('yandex_map_key'));
         $form   = $this->createForm(new $formType, $entity);
         
         return array(
@@ -102,7 +102,7 @@ class RealtyController extends Controller
         $realty = 'Spb\\RealityBundle\\Entity\\' . ucwords($rtype);
         $formType = 'Spb\\RealityBundle\\Form\\' . ucwords($rtype) . 'Type';
         
-        $entity = new $realty();
+        $entity = new $realty($this->container->getParameter('yandex_map_key'));
         $form   = $this->createForm(new $formType, $entity);
 
         $request = $this->getRequest();

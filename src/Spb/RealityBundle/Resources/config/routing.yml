@@ -13,7 +13,7 @@ spb_realty_show:
 spb_controller:
     resource: "@SpbRealityBundle/Controller"
     type:     annotation
-    
+       
 spb_about: { pattern: /about, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:about.html.twig' } }
 spb_contacts: { pattern: /contacts, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:contacts.html.twig' } }
 spb_home: { pattern: /, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:index.html.twig' } }
