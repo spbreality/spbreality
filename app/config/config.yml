@@ -25,7 +25,10 @@ twig:
 #          - 'form_table_layout.html.twig'
           - 'SpbRealityBundle:Form:form_layout.html.twig'          
 #          - 'SpbRealityBundle:Form:fields_errors.html.twig'
-
+    globals:
+        yandex_map_key: %yandex_map_key%
+        yandex_map_key2: %yandex_map_key2%
+        yandex_map_key3: %yandex_map_key3%
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
@@ -75,3 +78,18 @@ knp_paginator:
     template:
         pagination: SpbRealityBundle:Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+        
+avalanche_imagine:
+    web_root:     %kernel.root_dir%/../web
+    cache_prefix: media/cache
+    driver:       gd
+    filters:
+        my_thumb:
+            type:    thumbnail
+            options: { size: [40, 30], mode: outbound } 
+        thumb270:
+            type:    thumbnail
+            options: { size: [270, 180], mode: outbound }
+        thumb470:
+            type:    thumbnail
+            options: { size: [470, 300], mode: outbound }        

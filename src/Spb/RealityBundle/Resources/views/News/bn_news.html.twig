@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<ul class="breadcrumb">
+    <li>
+        <a href="{{ path ('spb_home')}}">РосРеал</a><span class="divider">/</span>
+    </li>
+    <li>
+        Новости <span class="divider">/</span>
+    </li>
+    <li>Рынок недвижимости</li>
+</ul>
+
+<table class="table table-condensed table-striped">
+{% for item in items %}
+    <tr>
+        <td>
+            <blockquote>
+                <p><a href="{{ item.link}}" target="_new">{{ item.title }}</a></p>
+                <small>
+                {{ item.pubDate|date("d/m/Y") }} <span class="divider">/</span>
+                {{ item.category }} <span class="divider">/</span>
+                Источник <a href="{{ item.link}}" target="_new">БН.ру</a>
+                </small>
+            </blockquote>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

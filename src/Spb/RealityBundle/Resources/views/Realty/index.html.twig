@@ -1,8 +1,21 @@
-{% extends '::base_hero.html.twig' %}
+{% set spb_route = app.request.attributes.get('_route') %}
+
+{% block javascripts %} 
+<script>   
+    $('.thumb40').popover();
+</script>
+{% endblock %} 
+
+{% if (spb_route == 'spb_realty' ) %}
+    {% set base = '::base.html.twig' %} 
+{% else %}
+    {% set base = '::base_hero.html.twig' %} 
+{% endif %}
+
+{% extends base %}
 
 {% block body %}
 
-<div class="container">
     <ul class="breadcrumb">
         <li>
             Жилая недвижимость<span class="divider">/</span>
@@ -11,18 +24,18 @@
             {% block rtype_ru_pl_camel %}Объекты{% endblock %}
         </li>
         <li class="pull-right">
-            {% block add_link %}#{% endblock %}<span class="divider">|</span>
+            {% if (spb_route != 'spb_realty' ) %}
+                {% block add_link %}#{% endblock %}<span class="divider">|</span>
+            {% endif %}
             <a href="#" onClick='$("#searchForm").toggle("slow");' class="pull-right"> Поиск </a>
         </li>
     </ul>
                 
-
 {% block search %}{% endblock %}        
 
 {% block rtypeblock %}{% endblock %}
 
 {# display navigation #}
-{{ entities.render()|raw }}
-        
-</div>
+{{ knp_pagination_render(entities) }}
+     
 {% endblock %}

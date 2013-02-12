@@ -1,11 +1,23 @@
-SpbRealityBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: SpbRealityBundle:Default:index }
+spb_realty:
+    pattern:  /realty/{rtype}/
+    defaults: { _controller: SpbRealityBundle:Realty:index, rtype: flat }
+    requirements:
+      rtype: room|flat|land|house|office|storehouse|building
 
-SpbRealityBundle_realty:
-    pattern:  /realty/{name}
-    defaults: { _controller: SpbRealityBundle:Default:realty }
+spb_realty_show:
+    pattern:  /realty/{rtype}/{id}/show
+    defaults: { _controller: SpbRealityBundle:Realty:show }
+    requirements:
+      rtype: room|flat|land|house|office|storehouse|building
 
-SpbRealityBundle_controller:
+spb_controller:
     resource: "@SpbRealityBundle/Controller"
     type:     annotation
+    
+spb_about: { pattern: /about, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:about.html.twig' } }
+spb_contacts: { pattern: /contacts, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:contacts.html.twig' } }
+spb_home: { pattern: /, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:index.html.twig' } }
+# spb_news: { pattern: /news, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:news.html.twig' } }
+spb_services: { pattern: /services, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:services.html.twig' } }
+spb_staff: { pattern: /staff, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:staff.html.twig' } }
+spb_vacancy: { pattern: /vacancy, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:vacancy.html.twig' } }

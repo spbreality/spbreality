@@ -88,7 +88,9 @@
           </div>
         </div>        
         
+        <div class="container">
         {% block body %}{% endblock %}
+        </div>        
             
         <hr/>
         
@@ -110,6 +112,7 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="{{ asset('bundles/spbreality/js/jquery-1.7.2.min.js') }}"></script>
         <script src="{{ asset('bundles/spbreality/js/bootstrap.min.js') }}"></script>
+        
 
         {% block javascripts %}{% endblock %}
     </body>

@@ -17,7 +17,7 @@ class LoadApproachTypeData implements FixtureInterface
     {
         $at = new ApproachType(); $at->setAbbr('авто'); $at->setName('Автомобильный'); $manager->persist($at);
         $at = new ApproachType(); $at->setAbbr('ж/д'); $at->setName('Железнодорожный'); $manager->persist($at);
-        $at = new ApproachType(); $at->setAbbr('авто, ж/д'); $at->setName('Автомобильный и железнодорожный'); $manager->persist($at);
+        $at = new ApproachType(); $at->setAbbr('авто ж/д'); $at->setName('Автомобильный и железнодорожный'); $manager->persist($at);
     
         $manager->flush();
     }

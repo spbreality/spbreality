@@ -17,7 +17,6 @@ class Operation
      *
      * @ORM\Column(name="c09_id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -90,4 +89,14 @@ class Operation
     {
         return $this->getName();
     }       
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 }

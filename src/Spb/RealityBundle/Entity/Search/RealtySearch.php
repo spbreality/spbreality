@@ -60,6 +60,15 @@ class RealtySearch
      */
     public $operation;
     
+    /**
+     * объект недвижимости с фото
+     * 
+     * @var boolean
+     * @Assert\Type(type="boolean")
+     * 
+     */
+    public $with_foto;    
+    
     /*
         *  конструктор иницилизирует query builder
         */
@@ -72,6 +81,10 @@ class RealtySearch
     {
         $qb = $this->qb;
         
+        if ($this->with_foto) 
+            $qb->innerJoin('r.documents', 'd');
+        else
+            $qb->leftJoin('r.documents', 'd');
         //Мин. цена на объект недвижимости
         if ($this->min_price) $qb->andWhere($qb->expr()->gte('r.price', $this->min_price));
         //Макс. цена на объект недвижимости
@@ -82,6 +95,7 @@ class RealtySearch
         if ($this->district) $qb->andWhere($qb->expr()->in('r.district', $this->district));
         //Операция (продажа/аренда)
         if ($this->operation) $qb->andWhere($qb->expr()->in('r.operation', $this->operation));
+        
         
         return $this;
     }

@@ -32,8 +32,12 @@ class RealtySearchType extends AbstractType
                     'expanded' => true,
                     'required' => false,
                     'label' => 'Тип операции'))
-               ->add('address', null, array('required' => false, 'label' => 'адрес')
-                );
+               ->add('address', null, array('required' => false, 'label' => 'адрес'))
+               ->add('with_foto', 'choice', array(
+                   'choices' => array(true => 'только с фотографиями'),
+                   'multiple' => true,
+                   'expanded' => true,
+                   'required' => false));
     }
     
     public function getDefaultOptions(array $options)

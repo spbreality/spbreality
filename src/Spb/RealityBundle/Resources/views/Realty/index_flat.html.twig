@@ -1,11 +1,11 @@
 {% extends 'SpbRealityBundle:Realty:index.html.twig' %}
 
-{% block rtype_ru_pl_camel %}<a href="{{ path('admin_realty', { 'rtype': "flat" }) }}">Квартиры</a>{% endblock %}
+{% block rtype_ru_pl_camel %}<a href="{{ path(spb_route, { 'rtype': "flat" }) }}">Квартиры</a>{% endblock %}
 {% block add_link %}<a href="{{ path('admin_realty_new', { 'rtype': "flat" }) }}"> Добавить квартиру</a>{% endblock %}
 
 {% block search%}
 
-<form id='searchForm' class="form-inline" action="{{ path('admin_realty', { 'rtype': "flat" }) }}" method="get" {% if (mode is sameas("simple")) %} style="display:none" {% endif %}>
+<form id='searchForm' class="form-inline" action="{{ path(spb_route, { 'rtype': "flat" }) }}" method="get" {% if (mode is sameas("simple")) %} style="display:none" {% endif %}>
     <fieldset>
         <table class=table>
             <tr>
@@ -49,6 +49,9 @@
                     <div class="control-group">
                         {{ form_widget(search_form.district) }}
                     </div>                              
+                    <div class="control-group">
+                        {{ form_widget(search_form.with_foto) }}
+                    </div>                         
                 </td>
                 <td>
                     <div  class="control-group">
@@ -103,35 +106,52 @@
 </form>
 {% endblock%}
 
-
 {% block rtypeblock %}
 <table class="table table-striped table-bordered table-condensed">
     <thead>
         <tr>
-            <th>{{ entities.sortable('№', 'r.id')|raw }} {% if entities.isSorted('r.id') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
-            <th colspan="2">Тип</th>
-            <th>Район</th>
-            <th>{{ entities.sortable('Адрес', 'r.address')|raw }} {% if entities.isSorted('r.address') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>{{ knp_pagination_sortable(entities, '№', 'r.id') }} {% if entities.isSorted('r.id') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>&nbsp;</th>
+            {% if (spb_route != 'spb_realty' ) %}
+                <th>Район</th>
+            {% endif %}
+            <th>{{ knp_pagination_sortable(entities, 'Адрес', 'r.address') }} {% if entities.isSorted('r.address') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            {% if (spb_route != 'spb_realty' ) %}
+                <th colspan="2">Тип</th>
+            {% endif %}
             <th><abbr title="Количество комнат">К</abbr></th>
             <th>Этаж</th>
             <th>Дом</th>
-            <th>{{ entities.sortable('общ.', 'r.s')|raw }} {% if entities.isSorted('r.s') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
-            <th>{{ entities.sortable('жил.', 'r.sl')|raw }} {% if entities.isSorted('r.sl') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
-            <th>{{ entities.sortable('кух.', 'r.sk')|raw }} {% if entities.isSorted('r.sk') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>{{ knp_pagination_sortable(entities, 'общ.', 'r.s') }} {% if entities.isSorted('r.s') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>{{ knp_pagination_sortable(entities, 'жил.', 'r.sl')}} {% if entities.isSorted('r.sl') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>{{ knp_pagination_sortable(entities, 'кух.', 'r.sk')}} {% if entities.isSorted('r.sk') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th><abbr title="Санузел">С</abbr></th>
-            <th>{{ entities.sortable('Цена', 'r.price')|raw }} {% if entities.isSorted('r.price') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
+            <th>{{ knp_pagination_sortable(entities, 'Цена', 'r.price') }} {% if entities.isSorted('r.price') %} <i class="icon-resize-vertical"></i> {% endif %}</th>
             <th>Доп.</th>
-            <th>&nbsp;</th>
+            {% if (spb_route != 'spb_realty' ) %}
+                <th>&nbsp;</th>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" title="Номер объекта">{{ entity.id }}</a></td>            
-            <td><abbr title="{{ entity.operation }}"  class="initialism">{{ entity.operation.abbr }}</abbr></td>
-            <td><abbr title="{{ entity.buildingstage.name }}"  class="initialism">{{ entity.buildingstage.abbr }}</abbr></td>            
-            <td>{{ entity.district }}</td>
-            <td>{{ entity.address }}</td>          
+            <td><a href="{{ path(spb_route~'_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" title="Номер объекта">{{ entity.id }}</a></td>
+            <td style='padding: 0;width: 40px'>    
+                {% if (entity.documents.count > 0) %}
+                    <a href="{{ path(spb_route~'_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" class="thumb40" rel="popover" data-content="<img src={{ entity.documents.first.webpath  | apply_filter('thumb270') }} />" data-original-title="{{ entity.address }}">
+                        <img src="{{ entity.documents.first.webpath  | apply_filter('my_thumb') }}" alt=""/>
+                    </a>
+                {% endif %}             
+            </td>            
+            {% if (spb_route != 'spb_realty' ) %}
+                <td>{{ entity.district }}</td>
+            {% endif %}
+            <td><a href="{{ path(spb_route~'_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" title="">{{ entity.address }}</a></td>          
+            {% if (spb_route != 'spb_realty' ) %}
+                <td><abbr title="{{ entity.operation }}"  class="initialism">{{ entity.operation.abbr }}</abbr></td>
+                <td><abbr title="{{ entity.buildingstage.name }}"  class="initialism">{{ entity.buildingstage.abbr }}</abbr></td>            
+            {% endif %}
             <td>{{ entity.rooms }}</td>
             <td>{{ entity.floor }}/{{ entity.floors }}</td>
             <td><abbr title="{{ entity.buildingtype.name }}" class="initialism">{{ entity.buildingtype.abbr }}</abbr></td>           
@@ -141,14 +161,15 @@
             <td><abbr title="{{ entity.bathunittype.name }}" class="initialism">{{ entity.bathunittype.abbr }}</abbr></td>
             <td>{{ entity.price }}</td>            
             <td>{{ entity.sdesc }}</td>
-            <td>
-                <a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" class="icon-check" title="Показать"></a>
-                <a href="{{ path('admin_realty_edit', { 'rtype': entity.realtytype, 'id': entity.id }) }}" class="icon-edit" title="Редактировать"></a>
-            </td>
+            {% if (spb_route != 'spb_realty' ) %}
+                <td>
+                    <a href="{{ path('admin_realty_show', { 'rtype': entity.realtytype, 'id': entity.id }) }}" class="icon-check" title="Показать"></a>
+                    <a href="{{ path('admin_realty_edit', { 'rtype': entity.realtytype, 'id': entity.id }) }}" class="icon-edit" title="Редактировать"></a>
+                </td>
+            {% endif %}
         </tr>
     {% endfor %}
     </tbody>
 </table>
-
 {% endblock %}
-        
+       

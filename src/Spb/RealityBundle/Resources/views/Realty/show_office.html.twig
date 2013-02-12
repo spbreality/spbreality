@@ -4,11 +4,11 @@
         <table class="table table-striped table-bordered">
             <tbody>
                 <tr>
-                    <th>Номер объекта</th>
+                    <th><abbr title="Номер объекта">Объект</abbr></th>
                     <td>{{ entity.id }}</td>
                 </tr>
                 <tr>
-                    <th>Тип сделки</th>
+                    <th>Тип&nbsp;сделки</th>
                     <td>{{ entity.operation }}</td>
                 </tr>
                 <tr>
@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <th>Площадь</th>
-                    <td>{{ entity.s }}</td>
+                    <td>{{ entity.s }} м<sup>2</sup></td>
                 </tr>
                 <tr>
                     <th><abbr tittle="Этаж/Всего этажей">Этажность</abbr></th>
@@ -32,21 +32,17 @@
                     <td>{{ entity.entrytype }}</td>
                 </tr>
                 <tr>
-                    <th><abbr tittle="Состояние помещения">Сост.</abbr></th>
+                    <th><abbr tittle="Состояние помещения">Состояние</abbr></th>
                     <td>{{ entity.statetype }}</td>
                 </tr>
                 {% block house %}{% endblock%}
                 <tr>
                     <th>Цена</th>
-                    <td>{{ entity.price }}</td>
+                    <td>{{ entity.price }} руб.</td>
                 </tr>
                 <tr>
-                    <th>Доп.сведения</th>
+                    <th><abbr title="Дополнительные сведения">Доп.</abbr></th>
                     <td>{{ entity.sdesc }}</td>
-                </tr>
-                <tr>
-                    <th>Описание</th>
-                    <td>{{ entity.ldesc }}</td>
                 </tr>
             </tbody>
         </table>

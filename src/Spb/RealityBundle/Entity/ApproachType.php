@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * типы подъездов в коммерческие помещения
  * Spb\RealityBundle\Entity\ApproachType
  *
- * @ORM\Table(name="t21_entry_type")
+ * @ORM\Table(name="t21_approach_type")
  * @ORM\Entity
  */
 class ApproachType

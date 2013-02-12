@@ -1,7 +1,6 @@
 {% extends '::base_hero.html.twig' %}
 
 {% block body %}
-<div class="container">
 
     <ul class="breadcrumb">
         <li>
@@ -37,7 +36,7 @@
         <!-- Carousel items -->
             {% for doc in entity.documents %}
             <div class="item {% if loop.first %} active {% endif %}">
-                <img src="{{ doc.webpath }}" alt=""/>
+                <img src="{{ doc.webpath | apply_filter('thumb470')}}" alt=""/>
                 <div class="carousel-caption">                    
                     <h4>
                         <span class="badge">{{ loop.index }}/{{ loop.length}}</span>
@@ -64,5 +63,4 @@
             
     </div>
 
-</div>
 {% endblock %}

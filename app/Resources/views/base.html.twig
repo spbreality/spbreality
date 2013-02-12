@@ -35,7 +35,7 @@
         
     </head>
     <body>
-        
+
         <div class="navbar navbar-fixed-top">
           <div class="navbar-inner">
             <div class="container">
@@ -45,21 +45,21 @@
                 <span class="icon-bar"></span>
               </a>
 
-                    <a class="brand" href="#"><img src="{{ asset('bundles/spbreality/img/logo.png') }}" alt="РосРеал" title="Риэлторская компания РосРеал"/></a>
+                    <a class="brand" href="{{ path('spb_home') }}"><img src="{{ asset('bundles/spbreality/img/logo.png') }}" alt="РосРеал" title="Риэлторская компания РосРеал"/></a>
                             
               <div class="nav-collapse  pull-right">
                 <ul class="nav">
-                  <li><a href="#"><i class="icon-white icon-home"></i></a></li>
+                  <li><a href="{{ path('spb_home') }}"><i class="icon-white icon-home"></i></a></li>
                   <li class="divider-vertical"></li>
                   <li class="dropdown" id="menu1">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
-                    Новости и статьи
+                    Медиа
                     <span class="label label-important">новое</span>
                     <b class="caret"></b>                    
                     </a>                    
                     <ul class="dropdown-menu">
-                      <li><a href="#">Новости компании</a></li>
-                      <li><a href="#">Рынок жилья</a></li>
+                      <li><a href="{{ path('spb_tv') }}">Недвижимость ТВ</a></li>
+                      <li><a href="{{ path('spb_news') }}">Новости недвижимости</a></li>
                     </ul>
                   </li>
                   <li class="dropdown" id="menu2">
@@ -68,21 +68,20 @@
                     <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                      <li>&nbsp;&nbsp;Жилая недвижимость</li>
-                      <li><a href="#">Продажа квартир</a></li>
-                      <li><a href="#">Продажа комнат</a></li>
-                      <li><a href="#">Аренда квартир и комнат</a></li>
+                      <li>&nbsp;&nbsp;Жилая&nbsp;недвижимость&nbsp;</li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'flat', 'f[operation][1]': '1' }) }}">Продажа квартир</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'room', 'f[operation][1]': '1' }) }}">Продажа комнат</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'flat', 'f[operation][2]': '2' }) }}">Аренда квартир</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'room', 'f[operation][2]': '2' }) }}">Аренда комнат</a></li>
                       <li class="divider"></li>
-                      <li>&nbsp;&nbsp;Коммерческая недвижимость</li>
-                      <li><a href="#">Офисные помещения</a></li>
-                      <li><a href="#">Торговые помещения</a></li>
-                      <li><a href="#">Здания и сооружения</a></li>
+                      <li>&nbsp;&nbsp;Загородная&nbsp;недвижимость&nbsp;</li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'land' }) }}">Участки за городом</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'house' }) }}">Загородные дома</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Элитная недвижимость</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Загородная недвижимость</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Недвижимость за рубежом</a></li>                      
+                      <li>&nbsp;&nbsp;Коммерческая&nbsp;недвижимость&nbsp;</li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'office' }) }}">Офисные помещения</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'storehouse' }) }}">Складские помещения</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'building' }) }}">Здания и сооружения</a></li>
                     </ul>
                   </li>
                   <li class="dropdown" id="menu3">
@@ -92,13 +91,11 @@
                     <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Квартиры и комнаты</a></li>
-                      <li><a href="#">Элитная недвижимость</a></li>
-                      <li><a href="#">Загородные дома и участки</a></li>
-                      <li><a href="#">Коммерческая недвижимость</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'flat', 'f[operation][1]': '1', 'f[with_foto][1]': '1' }) }}">Квартиры</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'house', 'f[with_foto][1]': '1' }) }}">Загородные дома</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'land', 'f[with_foto][1]': '1' }) }}">Земельные участки</a></li>
                     </ul>
                   </li>
-                  <li><a href="#about">Услуги</a></li>
                   <li class="divider-vertical"></li>
                   <li class="dropdown" id="menu4">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#menu4">
@@ -106,11 +103,11 @@
                     <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Наши сотрудники</a></li>
-                      <li><a href="#">Вакансии</a></li>
-                      <li><a href="#">Схема проезда</a></li>                      
+                      <li><a href="{{ path('spb_services') }}">Услуги</a></li>
+                      <li><a href="{{ path('spb_staff') }}">Наши сотрудники</a></li>
+                      <li><a href="{{ path('spb_vacancy') }}">Вакансии</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Контакты</a></li>
+                      <li><a href="{{ path('spb_contacts') }}">Контакты</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -119,9 +116,49 @@
           </div>
         </div>        
       
-        
-        {% block body %}{% endblock %}
-            
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                    <li class="nav-header">Жилая недвижимость</li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'flat', 'f[operation][1]': '1' }) }}">Продажа квартир</a></li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'room', 'f[operation][1]': '1' }) }}">Продажа комнат</a></li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'flat', 'f[operation][2]': '2' }) }}">Аренда квартир</a></li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'room', 'f[operation][2]': '2' }) }}">Аренда комнат</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Фотокаталог</li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'flat', 'f[operation][1]': '1', 'f[with_foto][1]': '1' }) }}">Квартиры</a></li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'house', 'f[with_foto][1]': '1' }) }}">Загородные дома</a></li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'land', 'f[with_foto][1]': '1' }) }}">Земельные участки</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Загородная недвижимость</li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'house'}) }}">Загородные дома</a></li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'land'}) }}">Участки за городом</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Коммерческая недвижимость</li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'office'}) }}">Офисы, сфера услуг</a></li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'storehouse'}) }}">Склады, производство</a></li>
+                    <li><a href="{{ path('spb_realty', { 'rtype': 'building'}) }}">Отдельно стоящие здания</a></li>
+                    <li class="nav-header">РосРеал</li>
+                      <li><a href="{{ path('spb_services') }}">Услуги</a></li>
+                      <li><a href="{{ path('spb_staff') }}">Сотрудники</a></li>
+                      <li><a href="{{ path('spb_vacancy') }}">Вакансии</a></li>
+                      <li><a href="{{ path('spb_contacts') }}">Контакты</a></li>                                          
+                    <li class="nav-header">Медиа недвижимость</li>
+                        <li><a href="{{ path('spb_tv') }}">Недвижимость-ТВ</a></li>
+                        <li><a href="{{ path('spb_news') }}">СПб Новости</a></li>
+                    </ul>
+
+                </div><!--/.well -->
+                </div><!--/span-->
+                <div class="span9">
+                    
+                    {% block body %}{% endblock %}
+                
+                </div>
+            </div><!--/row-->
+        </div><!--/.fluid-container-->  
         <hr/>
 
         <footer >
@@ -130,112 +167,74 @@
               <div class="span12">
                 <div class="row">
                   <div class="span3">
-                    <h4>Product</h4>
+                    <address>
+                        <strong>РосРеал</strong><br>
+                        Санкт-Петербург<br>
+                        наб. реки Мойки, дом 48<br>
+                        <abbr title="Телефон">Т:</abbr> (812) 314-48-68<br/>
+                        <abbr title="Телефон">Т:</abbr> (812) 913-1-913
+                    </address>                    
                     <ul class="unstyled">
-                      <li>
-                        <a href="/">Home</a>
-                      </li>
-                      <li>
-                        <a href="/why">Why Fleetio?</a>
-                      </li>
-                      <li>
-                        <a href="/tour">Feature Tour</a>
-                      </li>
-                      <li>
-                        <a href="/pricing">Pricing</a>
-                      </li>
-                      <li>
-                        <a href="/faq">FAQ</a>
-                        <span class="label success">Updated</span>
-                      </li>
+                        <li>&nbsp;</li>
+                        <li>
+                            <a href="http://vk.com/club36548056" title="РосРеал Вконтакте">
+                                РосРеал <img src="{{ asset('bundles/spbreality/img/vk32.png') }}" alt="В"/>контакте
+                            </a>
+                        </li>
                     </ul>
                   </div>
                   <div class="span3">
-                    <h4>More</h4>
+                    <h4>Недвижимость</h4>
                     <ul class="unstyled">
-                      <li>
-                        <a href="http://blog.fleetio.com">Fleetio Blog</a>
-                      </li>
-                      <li>
-                        <a href="/testimonials">Testimonials</a>
-                        <span class="label success">New</span>
-                      </li>
-                      <li>
-                        <a href="/roi">ROI Calculator</a>
-                      </li>
-                      <li>
-                        <a href="/fleet-management-software">Fleet Management Software</a>
-                      </li>
-                      <li>
-                        <a href="/vehicle-maintenance-software">Vehicle Maintenance Software</a>
-                      </li>
+                        <li><a href="{{ path('spb_realty', { 'rtype': 'flat', 'f[operation][1]': '1' }) }}">Жилая</a></li>
+                        <li><a href="{{ path('spb_realty', { 'rtype': 'house'}) }}">Загородная</a></li>
+                        <li><a href="{{ path('spb_realty', { 'rtype': 'office'}) }}">Коммерческая</a></li>
                     </ul>
                   </div>
                   <div class="span3">
-                    <h4>Company</h4>
+                    <h4>Фотокаталог</h4>
                     <ul class="unstyled">
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'flat', 'f[operation][1]': '1', 'f[with_foto][1]': '1' }) }}">Квартиры</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'house', 'f[with_foto][1]': '1' }) }}">Загородные дома</a></li>
+                      <li><a href="{{ path('spb_realty', { 'rtype': 'land', 'f[with_foto][1]': '1' }) }}">Земельные участки</a></li>
+                      <li>&nbsp;</li>
+                      <li>&nbsp;</li>
+                      <li>&nbsp;</li>
                       <li>
-                        <a href="/about">About</a>
-                      </li>
-                      <li>
-                        <a href="/jobs">Jobs</a>
-                      </li>
-                      <li>
-                        <a href="/affiliates">Affiliate Partners</a>
-                      </li>
+                          © 2007 <a href="http://www.rosreal.com" title="Риэлторская компаия - РосРеал">РосРеал</a>
+                      </li>                                            
                     </ul>
                   </div>
                   <div class="span3">
-                    <h4>Company</h4>
+                    <h4>РосРеал</h4>
                     <ul class="unstyled">
                       <li>
-                        <a href="/about">About</a>
+                        <a href="{{ path('spb_services') }}">Услуги</a>
                       </li>
                       <li>
-                        <a href="/jobs">Jobs</a>
+                        <a href="{{ path('spb_staff') }}">Сотрудники</a>
                       </li>
                       <li>
-                        <a href="/affiliates">Affiliate Partners</a>
+                        <a href="{{ path('spb_vacancy') }}">Вакансии</a>
                       </li>
+                      <li>
+                        <a href="{{ path('spb_contacts') }}">Контакты</a>
+                      </li>                      
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <hr/>        
-
-          <div id="footer-floor">
-            <div class="container">
-              <div class="row">
-                <div class="span9">
-                  <h3 id="phone">
-                    (812) 314-48-68
-                  </h3>
-                  <p>
-                    © 2007 <a href="http://www.rosreal.com" title="Риэлторская компаия - РосРеал">РосРеал</a>
-                  </p>                    
-                </div>
-                <div class="span3" id="elsewhere-icons">
-                   <a href="http://vk.com/club36548056" title="РосРеал Вконтакте">                     
-                       РосРеал <img src="{{ asset('bundles/spbreality/img/vk32.png') }}" alt="В"/>контакте
-                   </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
         </footer>
         
        
         <!-- Javascript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="{{ asset('bundles/spbreality/js/jquery-1.7.2.min.js') }}"></script>
+        <script src="{{ asset('bundles/spbreality/js/jquery-1.7.2.min.js') }}"></script>        
         <script src="{{ asset('bundles/spbreality/js/bootstrap.min.js') }}"></script>
-
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>

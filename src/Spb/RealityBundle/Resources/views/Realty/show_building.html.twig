@@ -4,11 +4,11 @@
         <table class="table table-striped table-bordered">
             <tbody>
                 <tr>
-                    <th>Номер объекта</th>
+                    <th><abbr title="Номер объекта">Объект</abbr></th>
                     <td>{{ entity.id }}</td>
                 </tr>
                 <tr>
-                    <th>Тип сделки</th>
+                    <th>Тип&nbsp;сделки</th>
                     <td>{{ entity.operation }}</td>
                 </tr>
                 <tr>
@@ -21,31 +21,27 @@
                 </tr>
                 <tr>
                     <th>Площадь</th>
-                    <td>{{ entity.s }}</td>
+                    <td>{{ entity.s }} м<sup>2</sup></td>
                 </tr>
                 <tr>
                     <th>Всего этажей</th>
                     <td>{{ entity.floors }}</td>
                 </tr>
                 <tr>
-                    <th><abbr tittle="Состояние помещения">Сост.</abbr></th>
+                    <th><abbr title="Состояние помещения">Состояние</abbr></th>
                     <td>{{ entity.statetype }}</td>
                 </tr>
                 <tr>
-                    <th>Площадь участка(га)</th>
-                    <td>{{ entity.area }}</td>
+                    <th><abbr title="Площадь участка(га)">Участок</abbr></th>
+                    <td>{{ entity.area }} га</td>
                 </tr>
                 <tr>
                     <th>Цена</th>
-                    <td>{{ entity.price }}</td>
+                    <td>{{ entity.price }} руб.</td>
                 </tr>
                 <tr>
-                    <th>Доп.сведения</th>
+                    <th><abbr title="Дополнительные сведения">Доп.</abbr></th>
                     <td>{{ entity.sdesc }}</td>
-                </tr>
-                <tr>
-                    <th>Описание</th>
-                    <td>{{ entity.ldesc }}</td>
                 </tr>
             </tbody>
         </table>

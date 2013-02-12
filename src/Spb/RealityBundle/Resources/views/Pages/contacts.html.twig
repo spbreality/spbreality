@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<ul class="breadcrumb">
+    <li>
+        <a href="{{ path ('spb_home')}}">РосРеал</a><span class="divider">/</span>
+    </li>
+    <li>
+        Контакты
+    </li>
+</ul>
+
+<address>
+    <strong>ООО «РосРеал»</strong><br/>
+    191186,  г. Санкт-Петербург,<br/>
+    набережная реки Мойки, дом 48<br/>
+    <abbr title="Телефон">Тел:</abbr> +7 812 314-48-68<br/>
+    <abbr title="Телефон">Тел:</abbr> +7 812 913-1-913<br/>
+    <abbr title="Электронный ящик">Email:</abbr><a href="mailto:info@rosreal.com"> info@rosreal.com</a><br/>
+</address>
+
+<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (начало) -->
+<div id="ymaps-map-id_136061960797528655986" style="width: 600px; height: 450px;"></div>
+<div style="width: 600px; text-align: right;"><a href="http://api.yandex.ru/maps/tools/constructor/index.xml" target="_blank" style="color: #1A3DC1; font: 13px Arial, Helvetica, sans-serif;">Создано с помощью инструментов Яндекс.Карт</a></div>
+<script type="text/javascript">
+function fid_136061960797528655986(ymaps) {
+    var map = new ymaps.Map("ymaps-map-id_136061960797528655986", {
+        center: [30.32098201058953, 59.93549510730226],
+        zoom: 15,
+        type: "yandex#map"
+    });
+    map.controls
+        .add("zoomControl")
+        .add("mapTools")
+        .add(new ymaps.control.TypeSelector(["yandex#map", "yandex#satellite", "yandex#hybrid", "yandex#publicMap"]));
+    map.geoObjects
+        .add(new ymaps.Placemark([30.319973, 59.93529], {
+            balloonContent: "Офис РосРеал"
+        }, {
+            preset: "twirl#lightblueDotIcon"
+        }));
+};
+</script>
+<script type="text/javascript" src="http://api-maps.yandex.ru/2.0-stable/?lang=ru-RU&coordorder=longlat&load=package.full&wizard=constructor&onload=fid_136061960797528655986"></script>
+<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->
+{% endblock %}
