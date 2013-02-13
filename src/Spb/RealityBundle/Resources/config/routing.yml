@@ -21,3 +21,4 @@ spb_home: { pattern: /, defaults: { _controller: FrameworkBundle:Template:templa
 spb_services: { pattern: /services, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:services.html.twig' } }
 spb_staff: { pattern: /staff, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:staff.html.twig' } }
 spb_vacancy: { pattern: /vacancy, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:vacancy.html.twig' } }
+spb_admin_home: { pattern: /admin/, defaults: { _controller: FrameworkBundle:Template:template, template: 'SpbRealityBundle:Pages:admin.html.twig' } }

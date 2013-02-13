@@ -27,8 +27,6 @@ twig:
 #          - 'SpbRealityBundle:Form:fields_errors.html.twig'
     globals:
         yandex_map_key: %yandex_map_key%
-        yandex_map_key2: %yandex_map_key2%
-        yandex_map_key3: %yandex_map_key3%
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%

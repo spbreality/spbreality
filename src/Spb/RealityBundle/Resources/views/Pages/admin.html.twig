@@ -1,0 +1,28 @@
+{% extends '::base_hero.html.twig' %}
+
+{% block body %}
+<ul>
+    <li>
+    Жилая недвижимость
+    <ul>
+        <li><a href="{{ path('admin_realty', { 'rtype': "flat" }) }}">Квартиры</a></li>
+        <li><a href="{{ path('admin_realty', { 'rtype': "room" }) }}">Комнаты</a></li>
+    </ul>
+    </li>
+    <li>
+    Загородная
+    <ul>
+        <li><a href="{{ path('admin_realty', { 'rtype': "house" }) }}">Дома, дачи, котеджы</a></li>
+        <li><a href="{{ path('admin_realty', { 'rtype': "land" }) }}">Участки</a></li>
+    </ul>
+    </li>
+    <li>
+    Коммерческая
+    <ul>
+        <li><a href="{{ path('admin_realty', { 'rtype': "office" }) }}">Офисные и торговые помещения</a></li>
+        <li><a href="{{ path('admin_realty', { 'rtype': "storehouse" }) }}">Производственно-складские помещения</a></li>
+        <li><a href="{{ path('admin_realty', { 'rtype': "building" }) }}">ОСЗ</a></li>
+    </ul>
+    </li>
+</ul>
+{% endblock %}

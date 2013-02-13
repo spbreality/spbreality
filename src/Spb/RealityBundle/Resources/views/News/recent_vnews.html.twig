@@ -1,0 +1,17 @@
+    <div class="row-fluid">
+{% set counter = 6 %}
+{% for item in items if counter > 0 %}
+  {% if (item.enclosure.properties.type == 'video/mp4') %}
+        <div class="span4">
+            <h4>{{ item.title.value }}</h4>
+            <p> {{item.description.value}}</p>
+            <p><a href="{{ item.link.value}}" target="_new">Подробнее &raquo;</a></p>
+        </div>
+    {% set counter = counter - 1 %}
+    {% if counter == 3 %}
+    </div>
+    <div class="row-fluid">
+    {% endif %}
+  {% endif %}
+{% endfor %}
+    </div>

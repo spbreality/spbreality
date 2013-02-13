@@ -38,12 +38,30 @@ class NewsController extends Controller {
      */
     public function tvAction() {
         
-        $rss = new RssNews();
-        
+        $rss = new RssNews();        
         $rss->load('http://www.bn.ru/rss/video.xml');
         $items = $rss->getItems(true);
         
         return $this->render('SpbRealityBundle:News:bn_tv.html.twig', array('items' => $items));
     }
+    
+    /**
+     * Показать последние видео новости, с bn.ru
+     * Например, на домашней странице
+     * Источник: http://www.bn.ru/rss/video.xml
+     * 
+     * @Route("/latest_vnews", name="spb_latest_vnews")
+     */    
+    public function recentVnewsAction()
+    {
+        $rss = new RssNews();       
+        $rss->load('http://www.bn.ru/rss/video.xml');
+        $items = $rss->getItems(true);
+
+        return $this->render(
+            'SpbRealityBundle:News:recent_vnews.html.twig',
+            array('items' => $items)
+        );
+    }    
 
 }
