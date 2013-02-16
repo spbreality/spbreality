@@ -18,7 +18,7 @@
             <blockquote>
                 <p><a href="{{ item.link}}" target="_new">{{ item.title }}</a></p>
                 <small>
-                {{ item.pubDate|date("d/m/Y") }} <span class="divider">/</span>
+                {{ item.pubDate| date('d/m/Y H:i', "Europe/Moscow") }} <span class="divider">/</span>
                 {{ item.category }} <span class="divider">/</span>
                 Источник <a href="{{ item.link}}" target="_new">БН.ру</a>
                 </small>

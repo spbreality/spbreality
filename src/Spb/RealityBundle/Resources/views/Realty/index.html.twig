@@ -23,11 +23,11 @@
         <li>
             {% block rtype_ru_pl_camel %}Объекты{% endblock %}
         </li>
-        <li class="pull-right">
+        <li class="pull-right" nowrap>
             {% if (spb_route != 'spb_realty' ) %}
                 {% block add_link %}#{% endblock %}<span class="divider">|</span>
             {% endif %}
-            <a href="#" onClick='$("#searchForm").toggle("slow");' class="pull-right"> Поиск </a>
+            <a href="#" onClick='$("#searchForm").toggle("slow");'> Поиск </a>
         </li>
     </ul>
                 

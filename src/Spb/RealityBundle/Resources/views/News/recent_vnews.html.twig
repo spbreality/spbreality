@@ -5,7 +5,7 @@
         <div class="span4">
             <h4>{{ item.title.value }}</h4>
             <p> {{item.description.value}}</p>
-            <p><a href="{{ item.link.value}}" target="_new">Подробнее &raquo;</a></p>
+            <p><a href="{{path('spb_tv')}}#{{ item.link.value | length }}d{{ item.title.value | length }}m{{ item.description.value | length }}">Подробнее &raquo;</a></p>
         </div>
     {% set counter = counter - 1 %}
     {% if counter == 3 %}

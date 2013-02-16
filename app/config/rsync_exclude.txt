@@ -2,7 +2,9 @@
 .git
 deps
 README.md
-- app/cache/*
-- app/logs/*
-- web/.htaccess
-- app/config/parameters.ini
+app/cache/*
+app/logs/*
+web/.htaccess
+web/media/*
+web/uploads/*
+app/config/parameters.ini

@@ -2,7 +2,6 @@
 
 {% block javascripts %} 
 <script src="http://releases.flowplayer.org/5.3.2/flowplayer.min.js"></script>
-
 {% endblock %}
 
 {% block stylesheets %}
@@ -22,13 +21,13 @@
 
 <table class="table table-condensed table-striped">
 {% for item in items %}
-{% if (item.enclosure.properties.type == 'video/mp4') %}
+{% if (item.enclosure.properties.type == 'video/mp4') %}       
 <tr>
     <td width="50%">
         <blockquote>
-            <p>{{ item.title.value }}</p>
+            <p id="{{ item.link.value | length }}d{{ item.title.value | length }}m{{ item.description.value | length }}"  style="padding-top: 40px; margin-top: -40px;">{{ item.title.value }}</p>
             <small>
-            {{ item.pubDate.value|date("d/m/Y") }} <span class="divider">/</span>
+            {{ item.pubDate.value|date("d/m/Y", "Europe/Moscow") }} <span class="divider">/</span>
             {% if item.author.value is defined %}
                 {{item.author.value}} <span class="divider">/</span>
             {% endif %}

@@ -10,6 +10,15 @@
 
 {% extends base %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/spbreality/css/bootstrap-image-gallery.min.css') }}">
+{% endblock %}
+
+{% block javascripts %}    
+    <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
+    <script src="{{ asset('bundles/spbreality/js/bootstrap-image-gallery.js') }}"></script>
+{% endblock %}
+    
 {% block body %}
 
     <ul class="breadcrumb">
@@ -24,15 +33,16 @@
         </li>
     </ul>
     
-    <div class="row">
-           
+    <div class="row">           
       <div class="span5">                 
         <div id="myCarousel" class="carousel slide">
-          <div class="carousel-inner">
+          <div class="carousel-inner" id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
         <!-- Carousel items -->
             {% for doc in entity.documents %}
             <div class="item {% if loop.first %} active {% endif %}">
-                <img src="{{ doc.webpath  | apply_filter('thumb470')}}" alt=""/>
+                <a href="{{ doc.webpath }}" title="{{ doc.title }}" data-gallery="gallery">
+                    <img src="{{ doc.webpath  | apply_filter('thumb470')}}" alt=""/>
+                </a>
                 <div class="carousel-caption">                    
                     <h4><span class="badge" style="float:right">{{ loop.index }}/{{ loop.length+1}}</span>{{ doc.title }}</h4>
                     {% if doc.desc is not empty %}<p>{{ doc.desc }}</p>{% endif %}
@@ -40,9 +50,12 @@
             </div>
             {% endfor %}
             <div class="item {% if (entity.documents.count == 0) %} active {% endif %}">
-                <img src="http://static-maps.yandex.ru/1.x/?pt={{entity.longitude}},{{entity.latitude}},flag&l=map&size=470,300&z=14&key={{yandex_map_key}}" alt=""/>
+                <a href="http://static-maps.yandex.ru/1.x/?pt={{entity.longitude}},{{entity.latitude}},flag&l=map&size=570,350&z=14&key={{yandex_map_key}}" title="{{ entity.district }}, {{ entity.address}}" data-gallery="gallery">
+                    <img src="http://static-maps.yandex.ru/1.x/?pt={{entity.longitude}},{{entity.latitude}},flag&l=map&size=470,300&z=14&key={{yandex_map_key}}" alt=""/>
+                </a>
                 <div class="carousel-caption">                    
-                    <h4><span class="badge" style="float:right">{{ entity.documents.count+1 }}/{{ entity.documents.count+1 }}</span>местоположение на карте</h4>
+                    <a class="btn btn-primary" target="_new" href="http://maps.yandex.ru/?ll={{entity.longitude}},{{entity.latitude}}&pt={{entity.longitude}},{{entity.latitude}}&z=14&text={{ entity.address }}">Яндекс карта</a>
+                    <span class="badge" style="float:right">{{ entity.documents.count+1 }}/{{ entity.documents.count+1 }}</span>
                 </div>
             </div>
           </div>
@@ -56,6 +69,23 @@
         <p>{{ entity.ldesc }}</p>
              
       </div>
+      
+      <!-- modal-gallery is the modal dialog used for the image gallery -->
+        <div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="-1">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">&times;</a>
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body"><div class="modal-image"></div></div>
+            <div class="modal-footer">
+                <a class="btn btn-primary modal-next">Вперед <i class="icon-arrow-right icon-white"></i></a>
+                <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Назад</a>
+                <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Слайд-шоу</a>
+                <a class="btn btn-inverse modal-download" target="_blank"><i class="icon-download icon-white"></i> Загрузить</a>
+                &nbsp;&nbsp;
+                <a class="btn" data-dismiss="modal" aria-hidden="true">Закрыть</a>
+            </div>
+        </div>
 
       <div class="span4">                
 
@@ -87,7 +117,7 @@
                     <td>{{ entity.sdesc }}</td>
                 </tr>
             </tbody>
-        </table>
+        </table>                    
 {% endblock %}
 
         {% if (spb_route != 'spb_realty_show' ) %}

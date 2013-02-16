@@ -15,8 +15,8 @@ class LoadBuildingStageData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $bs = new BuildingStage(); $bs->setName('Вторичка'); $bs->setAbbr('В'); $manager->persist($bs);
-        $bs = new BuildingStage(); $bs->setName('Новостройка'); $bs->setAbbr('Н'); $manager->persist($bs);
+        $bs = new BuildingStage(); $bs->getId(1); $bs->setName('Вторичка'); $bs->setAbbr('В'); $manager->persist($bs);
+        $bs = new BuildingStage(); $bs->getId(2); $bs->setName('Новостройка'); $bs->setAbbr('Н'); $manager->persist($bs);
         
         $manager->flush();
     }

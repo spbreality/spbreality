@@ -18,7 +18,6 @@ class BuildingStage
      *
      * @ORM\Column(name="c05_id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -91,5 +90,15 @@ class BuildingStage
     public function getAbbr()
     {
         return $this->abbr;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }

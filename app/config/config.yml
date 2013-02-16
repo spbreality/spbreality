@@ -90,4 +90,4 @@ avalanche_imagine:
             options: { size: [270, 180], mode: outbound }
         thumb470:
             type:    thumbnail
-            options: { size: [470, 300], mode: outbound }        
+            options: { size: [470, 300], mode: outbound }     

@@ -1,5 +1,13 @@
 {% extends '::base.html.twig' %}
 
+{% block javascripts %}
+<script>
+    $('#myCarousel').carousel({
+    interval: 10000
+    })
+</script>    
+{% endblock %}
+    
 {% block body %}
 
               <div id="myCarousel" class="carousel slide">
