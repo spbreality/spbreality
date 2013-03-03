@@ -1,9 +1,10 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
+#    - { resource: @SpbRealityBundle/Resources/config/services.yml }
 
 framework:
-    #esi:             ~
+    esi:             { enabled: true }
     translator:      { fallback: %locale% }
     secret:          %secret%
     charset:         UTF-8
@@ -91,3 +92,12 @@ avalanche_imagine:
         thumb470:
             type:    thumbnail
             options: { size: [470, 300], mode: outbound }     
+        thumb570:
+            type:    thumbnail
+            options: { size: [570, 350], mode: outbound }     
+        thumb70:
+            type:    thumbnail
+            options: { size: [70, 50], mode: outbound }                 
+        thumb170:
+            type:    thumbnail
+            options: { size: [170, 100], mode: outbound }               

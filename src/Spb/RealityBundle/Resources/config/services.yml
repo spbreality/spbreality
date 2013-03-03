@@ -1,10 +1,9 @@
 parameters:
-#    spb_reality.example.class: Spb\RealityBundle\Example
+    spb_reality.rss_parser.class: Spb\RealityBundle\Services\RssNews
 
 services:
 #    spb_reality.example:
 #        class: %spb_reality.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
-    flat_search:
-        class:        SpbRealityBundle\Form\Search\FlatSearchType
-        arguments:    [doctrine]
+    rss_parser:
+        class: %spb_reality.rss_parser.class%

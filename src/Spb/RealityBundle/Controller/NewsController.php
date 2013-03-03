@@ -3,6 +3,7 @@
 namespace Spb\RealityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -22,12 +23,25 @@ class NewsController extends Controller {
      */
     public function newsAction() {
         
-        $rss = new RssNews();
-        
-        $rss->load('http://www.bn.ru/rss/news.xml');
+        $rss = $this->get('rss_parser');        
+        $rss->load($this->container->getParameter('bn_rss_news'));
         $items = $rss->getItems();
 
-        return $this->render('SpbRealityBundle:News:bn_news.html.twig', array('items' => $items));
+        $response = $this->render('SpbRealityBundle:News:bn_news.html.twig', array('items' => $items));
+        
+        // пометить ответ как public или private
+        $response->setPublic();
+        //$response->setPrivate();
+
+        // установить max age для private и shared ответов
+        $response->setMaxAge(6000);
+        $response->setSharedMaxAge(6000);
+
+        // установить специальную директиву Cache-Control
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+                
+        return $response;
+        
     }
 
     /**
@@ -38,11 +52,24 @@ class NewsController extends Controller {
      */
     public function tvAction() {
         
-        $rss = new RssNews();        
-        $rss->load('http://www.bn.ru/rss/video.xml');
+        $rss = $this->get('rss_parser');
+        $rss->load($this->container->getParameter('bn_rss_videos'));
         $items = $rss->getItems(true);
         
-        return $this->render('SpbRealityBundle:News:bn_tv.html.twig', array('items' => $items));
+        $response = $this->render('SpbRealityBundle:News:bn_tv.html.twig', array('items' => $items));
+        
+        // пометить ответ как public или private
+        $response->setPublic();
+        //$response->setPrivate();
+
+        // установить max age для private и shared ответов
+        $response->setMaxAge(6000);
+        $response->setSharedMaxAge(6000);
+
+        // установить специальную директиву Cache-Control
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+                
+        return $response;
     }
     
     /**
@@ -53,15 +80,28 @@ class NewsController extends Controller {
      * @Route("/latest_vnews", name="spb_latest_vnews")
      */    
     public function recentVnewsAction()
-    {
-        $rss = new RssNews();       
-        $rss->load('http://www.bn.ru/rss/video.xml');
+    { 
+        $rss = $this->get('rss_parser');
+        $rss->load($this->container->getParameter('bn_rss_videos'));
         $items = $rss->getItems(true);
 
-        return $this->render(
+        $response = $this->render(
             'SpbRealityBundle:News:recent_vnews.html.twig',
             array('items' => $items)
         );
+        
+        // пометить ответ как public или private
+        $response->setPublic();
+        //$response->setPrivate();
+
+        // установить max age для private и shared ответов
+        $response->setMaxAge(6000);
+        $response->setSharedMaxAge(6000);
+
+        // установить специальную директиву Cache-Control
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+                
+        return $response;
     }    
 
 }

@@ -13,7 +13,7 @@
   Can be found online at http://rssphp.net/examples
  */
 
-namespace Spb\RealityBundle\Entity;
+namespace Spb\RealityBundle\Services;
 
 use \DOMDocument;
 

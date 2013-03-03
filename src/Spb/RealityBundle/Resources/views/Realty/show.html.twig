@@ -34,14 +34,14 @@
     </ul>
     
     <div class="row">           
-      <div class="span5">                 
+      <div class="span6">                 
         <div id="myCarousel" class="carousel slide">
           <div class="carousel-inner" id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
         <!-- Carousel items -->
             {% for doc in entity.documents %}
             <div class="item {% if loop.first %} active {% endif %}">
                 <a href="{{ doc.webpath }}" title="{{ doc.title }}" data-gallery="gallery">
-                    <img src="{{ doc.webpath  | apply_filter('thumb470')}}" alt=""/>
+                    <img src="{{ doc.webpath  | apply_filter('thumb570')}}" alt=""/>
                 </a>
                 <div class="carousel-caption">                    
                     <h4><span class="badge" style="float:right">{{ loop.index }}/{{ loop.length+1}}</span>{{ doc.title }}</h4>
@@ -51,7 +51,7 @@
             {% endfor %}
             <div class="item {% if (entity.documents.count == 0) %} active {% endif %}">
                 <a href="http://static-maps.yandex.ru/1.x/?pt={{entity.longitude}},{{entity.latitude}},flag&l=map&size=570,350&z=14&key={{yandex_map_key}}" title="{{ entity.district }}, {{ entity.address}}" data-gallery="gallery">
-                    <img src="http://static-maps.yandex.ru/1.x/?pt={{entity.longitude}},{{entity.latitude}},flag&l=map&size=470,300&z=14&key={{yandex_map_key}}" alt=""/>
+                    <img src="http://static-maps.yandex.ru/1.x/?pt={{entity.longitude}},{{entity.latitude}},flag&l=map&size=570,350&z=14&key={{yandex_map_key}}" alt=""/>
                 </a>
                 <div class="carousel-caption">                    
                     <a class="btn btn-primary" target="_new" href="http://maps.yandex.ru/?ll={{entity.longitude}},{{entity.latitude}}&pt={{entity.longitude}},{{entity.latitude}}&z=14&text={{ entity.address }}">Яндекс карта</a>
@@ -65,6 +65,21 @@
           <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
           {% endif %}
         </div>
+     
+        <ul class="thumbnails">
+            {% for doc in entity.documents %}
+                <li class="span2">
+                    <a href="#" class="thumbnail" onclick="$('#myCarousel').carousel({{ loop.index-1 }})">
+                    <img src="{{ doc.webpath  | apply_filter('thumb170')}}" alt=""/>
+                    </a>
+                </li>
+            {% endfor %}
+                <li class="span2">
+                    <a href="#" class="thumbnail" onclick="$('#myCarousel').carousel({{ entity.documents.count }})">
+                    <img src="http://static-maps.yandex.ru/1.x/?pt={{entity.longitude}},{{entity.latitude}},flag&l=map&size=170,100&z=14&key={{yandex_map_key}}" alt=""/>
+                    </a>
+                </li>
+        </ul>
               
         <p>{{ entity.ldesc }}</p>
              
@@ -87,7 +102,7 @@
             </div>
         </div>
 
-      <div class="span4">                
+      <div class="span3">                
 
 {% block rtypebody %}          
         <table class="table table-striped table-bordered">

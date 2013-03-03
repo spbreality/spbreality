@@ -85,6 +85,6 @@
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
               </div>
 
-{% render url('spb_latest_vnews') %}
+{% render url('spb_latest_vnews') with { }, {'standalone': true} %}
 
 {% endblock %}
