@@ -21,6 +21,10 @@ class OfficeType extends AbstractType
             ->add('price', null, array('label' => 'Цена в тыс. руб.'))
             ->add('sdesc', null, array('label' => 'Доп. сведения'))
             ->add('ldesc', null, array('label' => 'Описание'))
+            ->add('adv', 'choice',array(
+                'choices' => array('1' => 'На главной странице'),
+                'required'    => false,
+                'label' => 'Реклама'))
         ;
         
     }

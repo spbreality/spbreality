@@ -68,7 +68,7 @@ class NewsController extends Controller {
 
         // установить специальную директиву Cache-Control
         $response->headers->addCacheControlDirective('must-revalidate', true);
-                
+               
         return $response;
     }
     

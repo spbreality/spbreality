@@ -1,0 +1,14 @@
+/* 
+    Document   : viktis
+    Created on : 12.03.2013, 18:35:24
+    Author     : Denis Olinam
+    Description:
+        Дополнения к twitter bootstrap.
+*/
+
+/* set a max-width for horizontal layout and make it centered */
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1600px; /* or 1200px */
+}

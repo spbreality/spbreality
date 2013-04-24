@@ -92,6 +92,17 @@ abstract class Realty
     private $yandex_map_key;
     
     /**
+     * @var integer $adv
+     * 
+     * Побитовое поле
+     * 0 бит - реклама на домашней странице
+     *
+     * @ORM\Column(name="c07_adv", type="integer")
+     */
+    private $adv = 0;
+    
+    
+    /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
@@ -389,5 +400,25 @@ abstract class Realty
     public function getLatitude()
     {
         return $this->latitude;
+    }
+
+    /**
+     * Set adv
+     *
+     * @param integer $adv
+     */
+    public function setAdv($adv)
+    {
+        $this->adv = $adv;
+    }
+
+    /**
+     * Get adv
+     *
+     * @return integer 
+     */
+    public function getAdv()
+    {
+        return $this->adv;
     }
 }

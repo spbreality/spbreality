@@ -1,89 +1,9 @@
 {% extends '::base.html.twig' %}
 
-{% block javascripts %}
-<script>
-    $('#myCarousel').carousel({
-    interval: 10000
-    })
-</script>    
-{% endblock %}
-    
+   
 {% block body %}
 
-              <div id="myCarousel" class="carousel slide">
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <img src="{{ asset('bundles/spbreality/img/spbhome.png') }}" alt="">
-                    <div class="carousel-caption">
-                      <h4>Риэлторская компания РосРеал это НАДЕЖНОСТЬ, КАЧЕСТВО, УВАЖЕНИЕ!<span class="badge" style="float:right">1/8</span></h4>
-                      <br/>
-                      <p>
-                          Наша компания оказывает полный спектр услуг на рынках жилой, коммерческой и загородной недвижимости.
-                          Мы хорошо знаем, чего ждут наши клиенты от риэлтерской компании и прилагаем все усилия, чтобы обеспечить качество и надежность оказываемых услуг! 
-                      </p>
-                      <p><a href="{{ path('spb_services') }}" class="btn btn-primary btn-small" >Наши услуги &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="{{ asset('bundles/spbreality/img/spbflat.png') }}" alt="">
-                    <div class="carousel-caption">
-                      <h4>Жилая недвижимость - продажа и аренда квартир<span class="badge" style="float:right">2/8</span></h4>
-                      <p>продажа квартир, квартиры в Петербурге, купить квартиру, однокомнатные квартиры, двухкомнатные квартиры, квартиры от частников, квартиры СПб, вторичные квартиры, новостройки Петербурга, вторичный рынок, цены на квартиры</p>
-                      <p><a href="{{ path('spb_realty', { 'rtype': 'flat' }) }}" class="btn btn-primary btn-small">Квартиры &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="{{ asset('bundles/spbreality/img/spbroom.png') }}" alt="">
-                    <div class="carousel-caption">
-                      <h4>Жилая недвижимость - продажа и аренда комнат<span class="badge" style="float:right">3/8</span></h4>
-                      <p>продажа и аренда комнат в Петербурге, комнаты в Петербурге, купить комнату, комната в коммунальной квартире, объвления о продаже комнат, комнаты СПб, цены на комнаты</p>
-                      <p><a href="{{ path('spb_realty', { 'rtype': 'room' }) }}" class="btn btn-primary btn-small">Комнаты &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="{{ asset('bundles/spbreality/img/spbhouse.png') }}" alt="">
-                    <div class="carousel-caption">
-                      <h4>Загородные дома<span class="badge" style="float:right">4/8</span></h4>
-                      <p>продажа домов, продажа дач, дома Ленинградская область, дачи Ленинградская область, дома Ленобласть, дачи Ленобласть, загородные дома фото, аренда и продажа дач и коттеджев</p>
-                      <p><a href="{{ path('spb_realty', { 'rtype': 'house' }) }}" class="btn btn-primary btn-small">Дома и дачи &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="{{ asset('bundles/spbreality/img/spbland.png') }}" alt="">
-                    <div class="carousel-caption">
-                      <h4>Участки за городом<span class="badge" style="float:right">5/8</span></h4>
-                      <p>продажа участков, участки Ленинградская область, участки Ленобласть, участки фото, дачи фото, загородная недвижимость в Санкт-Петербурге и Ленинградской области, спб пригороды, Ленобласть</p>
-                      <p><a href="{{ path('spb_realty', { 'rtype': 'land' }) }}" class="btn btn-primary btn-small">Участки за городом &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="{{ asset('bundles/spbreality/img/spboffice.png') }}" alt="">
-                    <div class="carousel-caption">
-                      <h4>Офисные помещения<span class="badge" style="float:right">6/8</span></h4>
-                      <p>СПб коммерческая недвижимость, продажа офисов, аренда офисов, офисы Петербурга, снять офис, аренда помещений, торговые помещения, помещения под магазин, аренда павильонов</p>
-                      <p><a href="{{ path('spb_realty', { 'rtype': 'office' }) }}" class="btn btn-primary btn-small">Офисы &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="{{ asset('bundles/spbreality/img/spbstore.png') }}" alt="">
-                    <div class="carousel-caption">
-                      <h4>Складские и производственные помещения<span class="badge" style="float:right">7/8</span></h4>
-                      <p>аренда и продажа складов и производственных помещений в Петербурге и Ленинградской области, склады в Петербурге, производственные помещения Ленобласть, аренда складов</p>
-                      <p><a href="{{ path('spb_realty', { 'rtype': 'storehouse' }) }}" class="btn btn-primary btn-small">Склады &raquo;</a></p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="{{ asset('bundles/spbreality/img/spbbuilding.png') }}" alt="">
-                    <div class="carousel-caption">
-                      <h4>Отдельно стоящие здания<span class="badge" style="float:right">8/8</span></h4>
-                      <p>продажа и аренда отдельно стоящих зданий в Петербурге и Ленобласти, СПб здание свободного назначения, аренда отдельно стоящих зданий, ОСЗ СПб</p>
-                      <p><a href="{{ path('spb_realty', { 'rtype': 'building' }) }}" class="btn btn-primary btn-small">Здания &raquo;</a></p>
-                    </div>
-                  </div>                        
-                </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-              </div>
+{% render url('spb_advertised_objects') with { }, {'standalone': true} %}
 
 {% render url('spb_latest_vnews') with { }, {'standalone': true} %}
 

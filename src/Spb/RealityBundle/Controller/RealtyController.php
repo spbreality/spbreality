@@ -45,7 +45,7 @@ class RealtyController extends Controller
 
         return $this->render('SpbRealityBundle:Realty:index_' . $rtype . '.html.twig', array('entities' => $pagination, 'search_form' => $search_form->createView(), 'mode'=> $this->get('request')->query->get('mode', 'simple')));
     }
-    
+        
     /**
      * Найти и отоброзить объект недвижимости
      *

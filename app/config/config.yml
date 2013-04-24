@@ -100,4 +100,16 @@ avalanche_imagine:
             options: { size: [70, 50], mode: outbound }                 
         thumb170:
             type:    thumbnail
-            options: { size: [170, 100], mode: outbound }               
+            options: { size: [170, 100], mode: outbound }  
+        thumb800x550:
+            type:    thumbnail
+            options: { size: [800, 550], mode: outbound, quality: 100}
+        thumb200x130:
+            type:    thumbnail
+            options: { size: [200, 130], mode: outbound, quality: 100}
+        thumb400x260:
+            type:    thumbnail
+            options: { size: [400, 260], mode: outbound, quality: 100}  
+        thumb1200x400:
+            type:    thumbnail
+            options: { size: [1200, 400], mode: outbound, quality: 100}            
